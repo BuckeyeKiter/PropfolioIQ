@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///Users/buckeyekiter/Downloads/closetrackiq_index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloseTrackIQ · CREDiligence AI</title>
+<link href="./CloseTrackIQ.v2_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0a0a0a;--paper:#f5f2ec;--paper-dark:#ede9df;--paper-mid:#eae6dc;
+  --gold:#b89a5a;--gold-light:rgba(184,154,90,0.15);--gold-line:rgba(184,154,90,0.25);
+  --gray:#6b6560;--gray-light:#9a948e;--gray-faint:#c8c3bc;--line:rgba(184,154,90,0.25);
+  --approved:#1a6b35;--approved-bg:#d4edda;--approved-border:#1a6b35;
+  --review:#7a4f00;--review-bg:#fff3cd;--review-border:#7a4f00;
+  --outstanding:#8b1a1a;--outstanding-bg:#f8d7da;--outstanding-border:#8b1a1a;
+  --blue:#2c5f8a;--blue-bg:#d1e4f5;
+  --pending:#5a3a7a;--pending-bg:#e8ddf5;
+}
+html,body{width:100%;height:100%;background:var(--paper);color:var(--ink);font-family:'Didact Gothic',sans-serif;overflow:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:0}
+
+/* ═══ PAGE SYSTEM ═══ */
+.pages{position:fixed;inset:0;overflow:clip;z-index:1}
+.pg{position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateX(100%);transition:transform 0.8s cubic-bezier(0.76,0,0.24,1),opacity 0.8s ease;overflow:hidden}
+.pg.active{pointer-events:all;opacity:1;transform:translateX(0)!important}
+.pg.out{transform:translateX(-5%)!important;opacity:0!important}
+
+/* ═══════════════════════════════════════════
+   LANDING / DEAL SETUP PAGE
+═══════════════════════════════════════════ */
+#landing{background:var(--ink);display:flex;flex-direction:column;overflow-y:auto}
+.land-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 64px;border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0}
+.land-logo{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
+.land-logo span{color:rgba(255,255,255,0.4)}
+.land-nav-links{display:flex;gap:28px;list-style:none}
+.land-nav-links a{font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;cursor:pointer;background:none;border:none}
+.land-nav-links a:hover{color:var(--gold)}
+.land-enter-btn{padding:9px 22px;border:1px solid rgba(184,154,90,0.4);font-family:'Didact Gothic',sans-serif;font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s;border-radius:1px}
+.land-enter-btn:hover{background:var(--gold);color:var(--ink)}
+
+.land-hero{padding:60px 64px 48px;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
+.lh-eyebrow{font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
+.lh-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(40px,5vw,68px);line-height:1;letter-spacing:-0.02em;color:#fff;margin-bottom:14px}
+.lh-title em{font-style:italic;color:var(--gold)}
+.lh-sub{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(14px,1.5vw,18px);color:rgba(255,255,255,0.35);max-width:640px;line-height:1.7}
+.lh-30{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:10px 20px;border:1px solid rgba(184,154,90,0.25);border-radius:2px}
+.lh-30-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+.lh-30-txt{font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);line-height:1.6}
+
+.land-setup{padding:48px 64px;flex:1;overflow-y:auto}
+.ls-section{margin-bottom:44px}
+.ls-section-head{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.ls-num{width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,154,90,0.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--gold);flex-shrink:0}
+.ls-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#fff;letter-spacing:-0.01em}
+.ls-subtitle{font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:2px}
+
+/* Deal info form */
+.deal-form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.df-field{display:flex;flex-direction:column;gap:6px}
+.df-field.full{grid-column:1/-1}
+.df-field.half{grid-column:span 1}
+.df-lbl{font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.28)}
+.df-input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:10px 14px;font-family:'Cormorant Garamond',serif;font-size:14px;color:#fff;outline:none;transition:border-color 0.3s;width:100%}
+.df-input:focus{border-color:rgba(184,154,90,0.5)}
+.df-input::placeholder{color:rgba(255,255,255,0.18)}
+.df-select{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:10px 14px;font-family:'Didact Gothic',sans-serif;font-size:11px;color:#fff;outline:none;transition:border-color 0.3s;width:100%;cursor:pointer;letter-spacing:0.05em}
+.df-select option{background:#1a1a1a;color:#fff}
+
+/* Third-party report cards */
+.report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.report-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:20px 22px;transition:all 0.3s;position:relative;overflow:hidden}
+.report-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+.report-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(184,154,90,0.25)}
+.report-card:hover::before{transform:scaleX(1)}
+.report-card.ordered{border-color:rgba(26,107,53,0.35);background:rgba(26,107,53,0.05)}
+.report-card.ordered::before{transform:scaleX(1);background:var(--approved)}
+.rc-type{font-size:7px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px}
+.rc-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#fff;margin-bottom:4px;line-height:1.2}
+.rc-vendor{font-size:9px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:14px;font-style:italic}
+.rc-status-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.rc-status-sel{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:2px;padding:7px 10px;font-family:'Didact Gothic',sans-serif;font-size:9px;color:#fff;outline:none;cursor:pointer;letter-spacing:0.08em}
+.rc-status-sel option{background:#1a1a1a}
+.rc-dates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.rc-date-field{display:flex;flex-direction:column;gap:4px}
+.rc-date-lbl{font-size:7px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+.rc-date-input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:2px;padding:6px 8px;font-family:'Didact Gothic',sans-serif;font-size:10px;color:#fff;outline:none;width:100%;cursor:pointer}
+.rc-date-input:focus{border-color:rgba(184,154,90,0.4)}
+.rc-order-btn{width:100%;padding:9px;font-family:'Didact Gothic',sans-serif;font-size:8px;letter-spacing:0.25em;text-transform:uppercase;border:1px solid rgba(184,154,90,0.35);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s;border-radius:2px}
+.rc-order-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.rc-order-btn.ordered-btn{background:rgba(26,107,53,0.2);border-color:rgba(26,107,53,0.5);color:#6dcc8a;cursor:default}
+.rc-order-btn.ordered-btn:hover{background:rgba(26,107,53,0.2);color:#6dcc8a}
+.rc-provider{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.rc-prov-input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:2px;padding:6px 10px;font-family:'Didact Gothic',sans-serif;font-size:10px;color:#fff;outline:none;width:100%}
+
+/* Party setup */
+.party-setup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.ps-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:18px 20px}
+.psc-role{font-size:7px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.psc-fields{display:flex;flex-direction:column;gap:8px}
+.psc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* Launch button */
+.land-launch{padding:32px 64px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:rgba(10,10,10,0.4)}
+.ll-note{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.2);max-width:400px;line-height:1.8}
+.ll-btn{display:flex;align-items:center;gap:12px;padding:16px 36px;background:var(--gold);color:var(--ink);font-family:'Didact Gothic',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;border-radius:2px}
+.ll-btn:hover{background:#fff}
+.ll-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+
+/* ═══════════════════════════════════════════
+   MAIN APP SHELL
+═══════════════════════════════════════════ */
+#app{background:var(--paper);display:grid;grid-template-columns:272px 1fr;height:100vh}
+.sidebar{background:var(--ink);display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,0.04)}
+.sb-top{padding:24px 22px 18px;border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0}
+.sb-brand{font-family:'Cormorant Garamond',serif;font-size:9.5px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px}
+.sb-product{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#fff;letter-spacing:-0.01em}
+.sb-product em{font-style:normal;color:var(--gold)}
+.sb-tag{font-size:7px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-top:3px;display:block}
+.deal-pill{margin:12px 18px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(184,154,90,0.2);border-radius:2px;padding:8px 10px;cursor:pointer}
+.deal-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;box-shadow:0 0 6px rgba(184,154,90,0.5)}
+.deal-name{font-family:'Cormorant Garamond',serif;font-size:12.5px;color:#fff;flex:1;line-height:1.3}
+.deal-arr{color:rgba(255,255,255,0.2);font-size:9px}
+.sb-nav{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:none}
+.sb-nav::-webkit-scrollbar{display:none}
+.nav-grp-lbl{font-size:7px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.17);padding:12px 22px 4px;display:block}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 22px;cursor:pointer;position:relative;transition:background 0.2s;text-decoration:none;border:none;background:none;width:100%;text-align:left}
+.nav-item:hover{background:rgba(255,255,255,0.03)}
+.nav-item.active{background:rgba(184,154,90,0.08)}
+.nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold)}
+.nav-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0.38}
+.nav-item.active .nav-icon,.nav-item:hover .nav-icon{opacity:1}
+.nav-icon svg{width:13px;height:13px;fill:none;stroke:var(--gold);stroke-width:1.5}
+.nav-text{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.28);transition:color 0.2s}
+.nav-item.active .nav-text,.nav-item:hover .nav-text{color:#fff}
+.nav-badge{margin-left:auto;background:rgba(184,154,90,0.18);border:1px solid rgba(184,154,90,0.28);border-radius:20px;padding:2px 6px;font-size:6.5px;letter-spacing:0.1em;color:var(--gold);font-family:'Didact Gothic',sans-serif}
+.sb-progress{padding:12px 18px;border-top:1px solid rgba(255,255,255,0.07);flex-shrink:0}
+.prog-meta{display:flex;justify-content:space-between;margin-bottom:5px}
+.prog-lbl{font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
+.prog-pct{font-size:7px;color:var(--gold)}
+.prog-bar{height:2px;background:rgba(255,255,255,0.07);border-radius:1px;overflow:hidden;margin-bottom:8px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),rgba(184,154,90,0.7));border-radius:1px}
+.prog-stats{display:flex;gap:8px}
+.ps-s{display:flex;flex-direction:column;gap:1px}
+.ps-n{font-family:'Cormorant Garamond',serif;font-size:14px;color:#fff}
+.ps-l{font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+.ps-sep{width:1px;height:26px;background:rgba(255,255,255,0.07);align-self:center}
+.sb-user{padding:10px 18px;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.user-av{width:26px;height:26px;border-radius:50%;background:rgba(184,154,90,0.2);border:1px solid rgba(184,154,90,0.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:10px;color:var(--gold);flex-shrink:0}
+.user-name{font-family:'Cormorant Garamond',serif;font-size:11px;color:#fff}
+.user-role{font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
+.up-mini{background:rgba(184,154,90,0.15);border:1px solid rgba(184,154,90,0.28);border-radius:2px;padding:4px 8px;font-size:7px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:background 0.2s;font-family:'Didact Gothic',sans-serif;margin-left:auto;white-space:nowrap}
+.up-mini:hover{background:rgba(184,154,90,0.25)}
+
+/* ═══ MAIN AREA ═══ */
+.main{display:flex;flex-direction:column;overflow:hidden}
+.topbar{display:flex;align-items:center;gap:14px;padding:0 28px;height:54px;border-bottom:1px solid var(--line);flex-shrink:0;background:rgba(245,242,236,0.97);backdrop-filter:blur(8px);z-index:20}
+.topbar-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;flex:1}
+.topbar-title em{font-style:italic;color:var(--gold)}
+.topbar-actions{display:flex;align-items:center;gap:9px}
+.tb-btn{display:flex;align-items:center;gap:6px;padding:6px 13px;font-family:'Didact Gothic',sans-serif;font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;border-radius:2px}
+.tb-btn-outline{background:transparent;border:1px solid rgba(10,10,10,0.14);color:var(--gray)}
+.tb-btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.tb-btn-gold{background:var(--ink);border:1px solid var(--ink);color:var(--paper)}
+.tb-btn-gold:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.tb-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.5}
+.tb-sep{width:1px;height:18px;background:var(--line)}
+.filter-tabs{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.ft{padding:5px 11px;font-family:'Didact Gothic',sans-serif;font-size:7px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;background:transparent;border:none;color:var(--gray-light);transition:all 0.2s;border-right:1px solid var(--line)}
+.ft:last-child{border-right:none}
+.ft.active,.ft:hover{background:var(--ink);color:var(--paper)}
+.status-legend{display:flex;align-items:center;gap:12px;padding:8px 28px;border-bottom:1px solid var(--line);background:var(--paper-dark);flex-shrink:0;flex-wrap:wrap}
+.sl-item{display:flex;align-items:center;gap:4px}
+.sl-swatch{padding:2px 7px;border-radius:2px;font-size:6.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif}
+.sw-approved{background:var(--approved-bg);color:var(--approved);border:1px solid var(--approved-border)}
+.sw-review{background:var(--review-bg);color:var(--review);border:1px solid var(--review-border)}
+.sw-outstanding{background:var(--outstanding-bg);color:var(--outstanding);border:1px solid var(--outstanding-border)}
+.sw-comments{background:var(--pending-bg);color:var(--pending);border:1px solid rgba(90,58,122,0.4)}
+.sw-pending{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(44,95,138,0.4)}
+.sl-count{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gray)}
+.sl-sep{width:1px;height:10px;background:var(--line)}
+.ai-badge{margin-left:auto;display:flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(10,10,10,0.04);border:1px solid var(--line);border-radius:20px}
+.ai-dot{width:5px;height:5px;border-radius:50%;background:var(--approved);animation:aiPulse 2.5s infinite}
+@keyframes aiPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(26,107,53,0.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(26,107,53,0)}}
+.ai-text{font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray)}
+.ai-text strong{color:var(--approved);font-weight:700}
+.main-content{display:flex;flex:1;overflow:hidden}
+.view{display:none;flex:1;overflow:hidden;flex-direction:column}
+.view.active{display:flex}
+
+/* ═══ CHECKLIST ═══ */
+.checklist-area{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.col-header{display:grid;grid-template-columns:26px 1fr 105px 112px 112px 124px 42px;padding:6px 26px;background:var(--paper-dark);border-bottom:1px solid var(--line);flex-shrink:0;gap:0}
+.ch{font-size:7px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gray-light);cursor:pointer;padding:0 5px;user-select:none}
+.ch:hover{color:var(--gold)}
+.ch:first-child,.ch:last-child{padding:0}
+.checklist-wrap{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.checklist-wrap::-webkit-scrollbar{width:3px}
+.checklist-wrap::-webkit-scrollbar-thumb{background:var(--gold)}
+.cat-section{border-bottom:1px solid var(--line)}
+.cat-header{display:flex;align-items:center;gap:11px;padding:11px 26px;background:var(--paper);cursor:pointer;user-select:none;transition:background 0.2s;position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(184,154,90,0.1)}
+.cat-header:hover{background:var(--paper-dark)}
+.cat-chevron{width:12px;height:12px;flex-shrink:0;transition:transform 0.3s}
+.cat-chevron svg{width:12px;height:12px;fill:none;stroke:var(--gold);stroke-width:2}
+.cat-section.collapsed .cat-chevron{transform:rotate(-90deg)}
+.cat-num{font-family:'Cormorant Garamond',serif;font-size:9.5px;color:var(--gold);letter-spacing:0.1em;width:22px;flex-shrink:0}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;flex:1}
+.cat-pills{display:flex;gap:4px;flex-wrap:wrap}
+.cpill{padding:2px 6px;border-radius:20px;font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700}
+.cpill-done{background:var(--approved-bg);color:var(--approved);border:1px solid var(--approved-border)}
+.cpill-open{background:var(--review-bg);color:var(--review);border:1px solid var(--review-border)}
+.cpill-missing{background:var(--outstanding-bg);color:var(--outstanding);border:1px solid var(--outstanding-border)}
+.cat-pct{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gray);margin-left:5px;white-space:nowrap}
+.cat-mini-bar{width:40px;height:2px;background:rgba(184,154,90,0.15);border-radius:1px;overflow:hidden;margin-left:4px}
+.cat-mini-fill{height:100%;background:var(--gold);border-radius:1px}
+.cat-items{}
+.cat-section.collapsed .cat-items{display:none}
+.item-row{display:grid;grid-template-columns:26px 1fr 105px 112px 112px 124px 42px;align-items:center;padding:0 26px;min-height:48px;border-bottom:1px solid rgba(184,154,90,0.06);transition:background 0.2s;cursor:pointer;gap:0}
+.item-row:hover{background:rgba(245,242,236,0.7)}
+.item-check{display:flex;align-items:center}
+.check-box{width:14px;height:14px;border-radius:2px;border:1.5px solid var(--gray-faint);display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.check-box.approved-cb{background:var(--approved);border-color:var(--approved)}
+.check-box.approved-cb svg{display:block}
+.check-box svg{display:none;width:8px;height:8px;fill:none;stroke:#fff;stroke-width:2.5}
+.item-name{padding:10px 8px 10px 5px;min-width:0}
+.item-title{font-family:'Cormorant Garamond',serif;font-size:13.5px;font-weight:400;line-height:1.3;margin-bottom:2px}
+.item-title a{color:inherit;text-decoration:none}
+.item-title a:hover{opacity:.75}
+.it-approved{color:var(--approved);font-weight:600}
+.it-review{color:var(--review);font-weight:600}
+.it-outstanding{color:var(--outstanding);font-weight:700}
+.item-meta{font-size:8px;letter-spacing:0.07em;color:var(--gray-light)}
+.meta-out{color:var(--outstanding);font-weight:700;font-size:7.5px}
+.meta-rev{color:var(--review);font-weight:700;font-size:7.5px}
+.meta-cmt{color:var(--pending);font-weight:700;font-size:7.5px}
+.item-party{padding:0 5px;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-party.po{color:var(--outstanding);font-weight:700}
+.item-date-cell{padding:0 5px}
+.item-date{font-size:11px;font-family:'Cormorant Garamond',serif;color:var(--ink)}
+.item-date.empty{color:var(--gray-faint);font-style:italic;font-size:9.5px;font-family:'Didact Gothic',sans-serif}
+.item-time{font-size:7.5px;letter-spacing:0.07em;color:var(--gray-light);margin-top:1px}
+.item-status{padding:0 5px;display:flex;align-items:center}
+.status-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700;white-space:nowrap;border:1px solid transparent}
+.sc-approved{background:var(--approved-bg);color:var(--approved);border-color:var(--approved-border)}
+.sc-review{background:var(--review-bg);color:var(--review);border-color:var(--review-border)}
+.sc-outstanding{background:var(--outstanding-bg);color:var(--outstanding);border-color:var(--outstanding-border)}
+.sc-comments{background:var(--pending-bg);color:var(--pending);border-color:rgba(90,58,122,0.4)}
+.sc-processing{background:var(--blue-bg);color:var(--blue);border-color:rgba(44,95,138,0.4)}
+.sc-dot{width:4px;height:4px;border-radius:50%;background:currentColor;flex-shrink:0}
+.item-actions{display:flex;align-items:center;justify-content:flex-end;gap:2px;padding:0}
+.ia-btn{width:22px;height:22px;border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;background:transparent;color:var(--gray);transition:all 0.2s;flex-shrink:0}
+.ia-btn:hover{background:var(--gold-light);color:var(--gold)}
+.ia-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.5}
+.ai-processing-row{background:linear-gradient(90deg,rgba(184,154,90,0.03),rgba(184,154,90,0.07),rgba(184,154,90,0.03));background-size:200% 100%;animation:shimmer 2.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ═══ TIMELINE VIEW ═══ */
+.timeline-wrap{flex:1;overflow-y:auto;padding:0 0 40px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.timeline-wrap::-webkit-scrollbar{width:3px}
+.timeline-wrap::-webkit-scrollbar-thumb{background:var(--gold)}
+.tl-header{padding:24px 36px 20px;border-bottom:1px solid var(--line);background:var(--paper);flex-shrink:0}
+.tl-h-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.tl-h-left{}
+.tl-eyebrow{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:-0.02em;color:var(--ink);line-height:1}
+.tl-sub{font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-top:5px}
+.tl-stats{display:flex;gap:0;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.tls{padding:12px 20px;text-align:center;border-right:1px solid var(--line)}
+.tls:last-child{border-right:none}
+.tls-n{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;line-height:1;margin-bottom:3px}
+.tls-n.green{color:var(--approved)}
+.tls-n.yellow{color:var(--review)}
+.tls-n.red{color:var(--outstanding)}
+.tls-l{font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-light)}
+/* 30-day progress bar */
+.tl-progress-section{padding:0 36px;margin-top:16px}
+.tl-pg-lbl{display:flex;justify-content:space-between;margin-bottom:6px}
+.tl-pg-label{font-size:7.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray)}
+.tl-pg-days{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink)}
+.tl-pg-bar{height:6px;background:var(--paper-dark);border:1px solid var(--line);border-radius:3px;overflow:hidden;position:relative}
+.tl-pg-fill{height:100%;background:linear-gradient(90deg,var(--approved),var(--gold));border-radius:3px;transition:width 1s cubic-bezier(0.16,1,0.3,1)}
+.tl-pg-today{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--outstanding);border-radius:1px}
+.tl-pg-today::after{content:'TODAY';position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:6px;letter-spacing:0.15em;color:var(--outstanding);font-weight:700;white-space:nowrap}
+/* Phase labels on bar */
+.tl-phases{display:flex;margin-top:4px;position:relative}
+.tl-phase-mark{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%)}
+.tl-phase-line{width:1px;height:8px;background:var(--line)}
+.tl-phase-lbl{font-size:6px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-faint);white-space:nowrap;margin-top:2px}
+
+/* Timeline items */
+.tl-body{padding:0 36px}
+.tl-month{margin-top:24px;margin-bottom:0}
+.tl-month-lbl{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gray-light);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:0}
+.tl-item{display:grid;grid-template-columns:80px 16px 1fr auto;gap:0 0;min-height:52px;position:relative}
+.tl-date-col{padding:14px 16px 14px 0;text-align:right}
+.tl-day{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--ink);line-height:1}
+.tl-weekday{font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-light)}
+.tl-spine{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:16px}
+.tl-dot{width:10px;height:10px;border-radius:50%;border:2px solid;flex-shrink:0;position:relative;z-index:2;margin-top:2px}
+.tl-dot.approved{background:var(--approved);border-color:var(--approved)}
+.tl-dot.review{background:var(--review);border-color:var(--review)}
+.tl-dot.outstanding{background:transparent;border-color:var(--outstanding)}
+.tl-dot.gold{background:var(--gold);border-color:var(--gold)}
+.tl-dot.blue{background:var(--blue);border-color:var(--blue)}
+.tl-dot.gray{background:var(--gray-faint);border-color:var(--gray-faint)}
+.tl-dot.today{background:var(--outstanding);border-color:var(--outstanding);box-shadow:0 0 0 3px rgba(139,26,26,0.2)}
+.tl-line{flex:1;width:1px;background:var(--line);margin-top:4px}
+.tl-content{padding:10px 0 10px 16px;border-bottom:1px solid rgba(184,154,90,0.07);cursor:pointer;transition:background 0.2s}
+.tl-content:hover{background:rgba(245,242,236,0.6)}
+.tl-item:last-child .tl-content{border-bottom:none}
+.tl-item:last-child .tl-line{display:none}
+.tl-cat{font-size:6.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.tl-event{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.tl-event.ev-approved{color:var(--approved);font-weight:600}
+.tl-event.ev-review{color:var(--review);font-weight:600}
+.tl-event.ev-outstanding{color:var(--outstanding);font-weight:700}
+.tl-event.ev-deadline{color:var(--outstanding);font-weight:700}
+.tl-event.ev-gold{color:var(--gold)}
+.tl-note{font-size:8px;letter-spacing:0.08em;color:var(--gray-light);line-height:1.5}
+.tl-chip{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700;margin-top:4px}
+.tc-approved{background:var(--approved-bg);color:var(--approved);border:1px solid var(--approved-border)}
+.tc-review{background:var(--review-bg);color:var(--review);border:1px solid var(--review-border)}
+.tc-outstanding{background:var(--outstanding-bg);color:var(--outstanding);border:1px solid var(--outstanding-border)}
+.tc-gold{background:rgba(184,154,90,0.12);color:var(--gold);border:1px solid rgba(184,154,90,0.3)}
+.tc-blue{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(44,95,138,0.3)}
+.tc-gray{background:rgba(107,101,96,0.1);color:var(--gray);border:1px solid rgba(107,101,96,0.2)}
+.tl-badge-col{padding:12px 0 12px 12px;display:flex;flex-direction:column;gap:4px;align-items:flex-end;min-width:130px}
+.deadline-flag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:2px;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700;background:var(--outstanding-bg);color:var(--outstanding);border:1px solid var(--outstanding-border)}
+.milestone-flag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:2px;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700;background:rgba(184,154,90,0.1);color:var(--gold);border:1px solid rgba(184,154,90,0.3)}
+.report-flag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:2px;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(44,95,138,0.3)}
+/* Today's marker */
+.tl-today-band{display:grid;grid-template-columns:80px 16px 1fr auto;align-items:center;background:rgba(139,26,26,0.04);border-top:1px solid rgba(139,26,26,0.15);border-bottom:1px solid rgba(139,26,26,0.15);min-height:36px}
+.tl-today-label{padding:8px 16px 8px 0;text-align:right;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--outstanding);font-weight:700}
+.tl-today-spine{display:flex;align-items:center;justify-content:center}
+.tl-today-dot-lg{width:12px;height:12px;border-radius:50%;background:var(--outstanding);box-shadow:0 0 0 4px rgba(139,26,26,0.2)}
+.tl-today-content{padding:8px 16px;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--outstanding);font-weight:600}
+.tl-today-right{padding:8px 0;font-size:7.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--outstanding)}
+
+/* ═══ PARTY DIRECTORY ═══ */
+.party-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--paper-dark)}
+.party-wrap{flex:1;overflow-y:auto;padding:24px 28px 40px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.party-wrap::-webkit-scrollbar{width:3px}
+.party-wrap::-webkit-scrollbar-thumb{background:var(--gold)}
+.party-section{margin-bottom:32px}
+.ps-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ps-icon{width:32px;height:32px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ps-icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
+.psi-lender{background:rgba(44,95,138,0.1);color:var(--blue)}
+.psi-borrower{background:rgba(26,107,53,0.1);color:var(--approved)}
+.psi-counsel{background:rgba(184,154,90,0.1);color:var(--gold)}
+.psi-title{background:rgba(90,58,122,0.1);color:var(--pending)}
+.psi-third{background:rgba(107,101,96,0.1);color:var(--gray)}
+.ps-label{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400}
+.ps-sublabel{font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-light);margin-top:1px}
+.party-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(256px,1fr));gap:10px}
+.party-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:16px 18px;transition:all 0.25s;position:relative;overflow:hidden}
+.party-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+.party-card:hover{background:var(--paper-dark);border-color:rgba(184,154,90,0.4)}
+.party-card:hover::before{transform:scaleX(1)}
+.pc-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;margin-bottom:10px;border:1px solid var(--line)}
+.av-lender{background:var(--blue-bg);color:var(--blue);border-color:rgba(44,95,138,0.25)}
+.av-borrower{background:var(--approved-bg);color:var(--approved);border-color:rgba(26,107,53,0.25)}
+.av-counsel{background:rgba(184,154,90,0.12);color:var(--gold);border-color:rgba(184,154,90,0.3)}
+.av-title{background:var(--pending-bg);color:var(--pending);border-color:rgba(90,58,122,0.25)}
+.av-third{background:rgba(107,101,96,0.1);color:var(--gray);border-color:rgba(107,101,96,0.2)}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;margin-bottom:2px}
+.pc-title-txt{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-bottom:2px}
+.pc-firm{font-size:10.5px;color:var(--gray);margin-bottom:10px;font-family:'Cormorant Garamond',serif;font-style:italic}
+.pc-contacts{display:flex;flex-direction:column;gap:4px}
+.pc-link{display:flex;align-items:center;gap:6px;text-decoration:none;padding:4px 7px;border-radius:2px;transition:background 0.2s;margin:-4px -7px}
+.pc-link:hover{background:rgba(184,154,90,0.08)}
+.pc-link svg{width:11px;height:11px;fill:none;stroke:var(--gold);stroke-width:1.5;flex-shrink:0}
+.pc-link-text{font-size:10.5px;color:var(--ink);font-family:'Cormorant Garamond',serif}
+.pc-link-text.email{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(44,95,138,0.3);text-underline-offset:2px}
+.pc-link:hover .email{color:var(--gold);text-decoration-color:rgba(184,154,90,0.5)}
+.pc-badge{display:inline-block;margin-top:8px;padding:2px 7px;border-radius:20px;font-size:6.5px;letter-spacing:0.16em;text-transform:uppercase;font-family:'Didact Gothic',sans-serif;font-weight:700}
+.badge-lender{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(44,95,138,0.25)}
+.badge-borrower{background:var(--approved-bg);color:var(--approved);border:1px solid rgba(26,107,53,0.25)}
+.badge-counsel{background:rgba(184,154,90,0.12);color:var(--gold);border:1px solid rgba(184,154,90,0.3)}
+.badge-title{background:var(--pending-bg);color:var(--pending);border:1px solid rgba(90,58,122,0.25)}
+.badge-third{background:rgba(107,101,96,0.1);color:var(--gray);border:1px solid rgba(107,101,96,0.2)}
+.party-search{display:flex;align-items:center;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:5px 10px;width:200px;transition:border-color 0.2s}
+.party-search:focus-within{border-color:var(--gold)}
+.party-search svg{width:12px;height:12px;fill:none;stroke:var(--gray-light);stroke-width:1.5;flex-shrink:0}
+.party-search input{border:none;background:transparent;outline:none;font-family:'Didact Gothic',sans-serif;font-size:10.5px;color:var(--ink);width:100%}
+.party-search input::placeholder{color:var(--gray-faint)}
+
+/* ═══ SUMMARY PANEL ═══ */
+.sum-panel{width:248px;border-left:1px solid var(--line);display:flex;flex-direction:column;background:var(--paper);flex-shrink:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.sum-panel::-webkit-scrollbar{width:2px}
+.sum-panel::-webkit-scrollbar-thumb{background:var(--gold)}
+.sp-head{padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.sph-lbl{font-size:7px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;display:block}
+.sph-title{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink)}
+.sp-sect{padding:12px 18px;border-bottom:1px solid var(--line)}
+.sps-lbl{font-size:6.5px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gray-light);margin-bottom:8px;display:block}
+.court-item{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(184,154,90,0.08)}
+.court-item:last-child{border-bottom:none}
+.ci-party{font-size:9.5px;color:var(--ink);font-family:'Cormorant Garamond',serif}
+.ci-sub{font-size:7px;letter-spacing:0.09em;text-transform:uppercase;color:var(--gray-light);margin-top:1px}
+.ci-sub.urgent{color:var(--outstanding);font-weight:700}
+.ci-count{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400}
+.ci-count.red{color:var(--outstanding)}
+.ci-count.yellow{color:var(--review)}
+.act-item{padding:6px 0;border-bottom:1px solid rgba(184,154,90,0.07)}
+.act-item:last-child{border-bottom:none}
+.ac-time{font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-light);margin-bottom:2px}
+.ac-text{font-size:10px;color:var(--ink);line-height:1.5;font-family:'Cormorant Garamond',serif}
+.ac-text strong{color:var(--gold);font-weight:400}
+.dead-item{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid rgba(184,154,90,0.08)}
+.dead-item:last-child{border-bottom:none}
+.di-label{font-size:9.5px;color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.3;max-width:120px}
+.di-date{font-size:8.5px;letter-spacing:0.07em;color:var(--gray-light);text-align:right}
+.di-date.soon{color:var(--review);font-weight:700}
+.di-date.past{color:var(--outstanding);font-weight:700}
+
+/* ═══ UPLOAD PANEL ═══ */
+.upload-overlay{position:fixed;inset:0;background:rgba(10,10,10,0.5);z-index:100;opacity:0;pointer-events:none;transition:opacity 0.4s;backdrop-filter:blur(2px)}
+.upload-overlay.open{opacity:1;pointer-events:all}
+.upload-panel{position:fixed;right:0;top:0;bottom:0;width:440px;background:var(--paper);z-index:101;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.upload-panel.open{transform:translateX(0)}
+.up-head{padding:22px 28px 18px;border-bottom:1px solid var(--line);flex-shrink:0}
+.up-logo{font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px}
+.up-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:-0.02em;margin-bottom:3px}
+.up-sub{font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);line-height:1.7}
+.up-close{position:absolute;right:20px;top:20px;width:28px;height:28px;border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--line);background:transparent;transition:all 0.2s;color:var(--gray)}
+.up-close:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.up-close svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
+.up-body{flex:1;overflow-y:auto;padding:22px 28px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.drop-zone{border:2px dashed rgba(184,154,90,0.3);border-radius:4px;padding:40px 24px;text-align:center;cursor:pointer;transition:all 0.3s}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--gold);background:rgba(184,154,90,0.03)}
+.drop-icon{width:40px;height:40px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(184,154,90,0.3);border-radius:50%;color:var(--gold)}
+.drop-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5}
+.drop-main{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--ink);margin-bottom:4px}
+.drop-sub{font-size:7.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:12px}
+.drop-types{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+.type-tag{padding:2px 8px;border:1px solid var(--line);border-radius:20px;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-light)}
+.ai-note{margin-top:16px;padding:11px 13px;background:rgba(26,107,53,0.05);border:1px solid rgba(26,107,53,0.15);border-radius:3px}
+.ain-head{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.ain-dot{width:5px;height:5px;border-radius:50%;background:var(--approved);animation:aiPulse 2s infinite}
+.ain-title{font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--approved);font-weight:700}
+.ain-body{font-size:10.5px;color:var(--gray);line-height:1.6;font-family:'Cormorant Garamond',serif;font-weight:300}
+.queued-files{margin-top:18px}
+.qf-head{font-size:7.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.qf-clear{font-size:7.5px;color:var(--outstanding);cursor:pointer;background:none;border:none;text-transform:uppercase;font-weight:700}
+.file-item{display:flex;align-items:center;gap:8px;padding:8px 11px;background:var(--paper-dark);border-radius:3px;margin-bottom:4px;border:1px solid var(--line)}
+.fi-icon{width:28px;height:28px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:6.5px;font-weight:700}
+.fi-pdf{background:var(--outstanding-bg);color:var(--outstanding)}
+.fi-doc{background:var(--blue-bg);color:var(--blue)}
+.fi-img{background:var(--approved-bg);color:var(--approved)}
+.fi-other{background:rgba(184,154,90,0.12);color:var(--gold)}
+.fi-info{flex:1;min-width:0}
+.fi-name{font-size:11px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;font-family:'Cormorant Garamond',serif}
+.fi-size{font-size:7.5px;color:var(--gray-light)}
+.fi-progress{height:2px;background:rgba(184,154,90,0.15);border-radius:1px;margin-top:4px;overflow:hidden}
+.fi-prog-fill{height:100%;background:var(--gold);border-radius:1px;transition:width 0.4s}
+.fi-status{font-size:7.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700}
+.fi-processing{color:var(--gold);animation:blink 1.5s infinite}
+.fi-done{color:var(--approved)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.fi-remove{width:16px;height:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray-faint);background:none;border:none;transition:color 0.2s;flex-shrink:0}
+.fi-remove:hover{color:var(--outstanding)}
+.fi-remove svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2}
+.up-foot{padding:16px 28px;border-top:1px solid var(--line);flex-shrink:0;background:var(--paper)}
+.up-submit{width:100%;padding:12px;font-family:'Didact Gothic',sans-serif;font-size:8.5px;letter-spacing:0.28em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:none;cursor:pointer;transition:background 0.3s;border-radius:2px;position:relative;overflow:hidden}
+.up-submit::after{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+.up-submit:hover::after{transform:translateX(0)}
+.up-submit span{position:relative;z-index:1}
+.up-hint{text-align:center;margin-top:8px;font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-light)}
+
+/* ═══ TOAST ═══ */
+.toast-stack{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:7px;z-index:200}
+.toast{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:var(--ink);border:1px solid rgba(255,255,255,0.1);border-radius:3px;max-width:300px;opacity:0;transform:translateY(10px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0);pointer-events:all}
+.toast-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toast-icon svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2}
+.ti-success{background:rgba(26,107,53,0.25);color:#6dcc8a}
+.ti-info{background:rgba(184,154,90,0.25);color:var(--gold)}
+.ti-warn{background:rgba(139,26,26,0.25);color:#e88}
+.toast-content{flex:1;min-width:0}
+.toast-title{font-size:11px;font-family:'Cormorant Garamond',serif;color:#fff;margin-bottom:1px}
+.toast-body{font-size:8px;letter-spacing:0.07em;color:rgba(255,255,255,0.4);line-height:1.5}
+.toast-close{color:rgba(255,255,255,0.2);cursor:pointer;background:none;border:none;font-size:15px;line-height:1;flex-shrink:0;transition:color 0.2s;padding:0}
+.toast-close:hover{color:#fff}
+
+/* ═══ ORDER MODAL ═══ */
+.order-modal{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.order-modal.open{opacity:1;pointer-events:all}
+.order-backdrop{position:absolute;inset:0;background:rgba(10,10,10,0.7);backdrop-filter:blur(4px)}
+.order-box{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;width:520px;max-width:90vw;overflow:hidden;transform:scale(0.96);transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
+.order-modal.open .order-box{transform:scale(1)}
+.ob-head{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.ob-logo{font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold)}
+.ob-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-top:4px}
+.ob-close{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:2px;cursor:pointer;background:transparent;color:var(--gray);transition:all 0.2s}
+.ob-close:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ob-close svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2}
+.ob-body{padding:22px 24px}
+.ob-field{margin-bottom:14px}
+.ob-lbl{font-size:7.5px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gray);margin-bottom:5px;display:block}
+.ob-input{width:100%;background:var(--paper-dark);border:1px solid var(--line);border-radius:2px;padding:9px 12px;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color 0.3s}
+.ob-input:focus{border-color:var(--gold)}
+.ob-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ob-foot{padding:16px 24px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end}
+.ob-cancel{padding:8px 16px;font-family:'Didact Gothic',sans-serif;font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;border:1px solid var(--line);background:transparent;color:var(--gray);transition:all 0.2s}
+.ob-cancel:hover{border-color:var(--gold);color:var(--gold)}
+.ob-order{padding:8px 22px;font-family:'Didact Gothic',sans-serif;font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);transition:all 0.2s}
+.ob-order:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+input[type="file"]{display:none}
+
+/* === CLOSETRACKIQ GATE === */
+#ctiq-gate{
+  position:fixed;inset:0;z-index:9999;
+  background:#0a0a0a;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Didact Gothic',sans-serif;
+}
+#ctiq-gate .g-ghost{
+  position:absolute;font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(80px,11vw,150px);color:transparent;
+  -webkit-text-stroke:1px rgba(184,154,90,0.07);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  white-space:nowrap;pointer-events:none;user-select:none;
+}
+#ctiq-gate .g-logo{
+  font-size:9px;letter-spacing:0.35em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);margin-bottom:40px;
+}
+#ctiq-gate .g-logo em{color:rgba(184,154,90,0.7);font-style:normal;}
+#ctiq-gate .g-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,38px);
+  font-weight:300;color:#e8e2d8;letter-spacing:0.03em;margin-bottom:8px;
+}
+#ctiq-gate .g-sub{
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.28);margin-bottom:36px;
+}
+#ctiq-gate .g-input{
+  width:280px;background:transparent;border:none;
+  border-bottom:1px solid rgba(255,255,255,0.14);
+  padding:11px 0;font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;color:#fff;outline:none;
+  letter-spacing:0.06em;text-align:center;transition:border-color 0.3s;
+  margin-bottom:8px;
+}
+#ctiq-gate .g-input:focus{border-bottom-color:#b89a5a;}
+#ctiq-gate .g-input::placeholder{color:rgba(255,255,255,0.14);}
+#ctiq-gate .g-err{
+  font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
+  color:#c0392b;margin-bottom:20px;opacity:0;transition:opacity 0.3s;
+}
+#ctiq-gate .g-err.show{opacity:1;}
+#ctiq-gate .g-btn{
+  display:inline-block;padding:13px 40px;
+  font-family:'Didact Gothic',sans-serif;font-size:9px;
+  letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;
+  background:transparent;border:1px solid rgba(184,154,90,0.5);
+  color:#b89a5a;transition:all 0.3s;margin-top:8px;
+}
+#ctiq-gate .g-btn:hover{background:rgba(184,154,90,0.08);border-color:#b89a5a;}
+#ctiq-gate .g-back{
+  margin-top:32px;font-size:9px;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.2);
+  text-decoration:none;transition:color 0.3s;
+}
+#ctiq-gate .g-back:hover{color:rgba(255,255,255,0.5);}
+
+</style>
+</head>
+<body>
+
+<div id="ctiq-gate">
+  <div class="g-ghost">CloseTrackIQ</div>
+  <div class="g-logo">CREDiligence AI &nbsp;·&nbsp; <em>CloseTrackIQ</em></div>
+  <div class="g-title">Restricted Access</div>
+  <div class="g-sub">Authorized parties only</div>
+  <input class="g-input" type="password" id="ctiqGateIn" placeholder="············" onkeydown="if(event.key===&#39;Enter&#39;)ctiqChkPass()">
+  <div class="g-err" id="ctiqGateErr">Incorrect passphrase. Please try again.</div>
+  <button class="g-btn" onclick="ctiqChkPass()">Unlock Access</button>
+  <a class="g-back" href="https://www.crediligence.biz/">← Return to CREDiligence</a>
+</div>
+
+<div class="pages">
+
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE · DEAL SETUP
+═══════════════════════════════════════════ -->
+<div class="pg active" id="landing">
+  <div class="land-nav">
+    <a href="https://www.crediligence.biz/" style="font-family:&#39;Didact Gothic&#39;,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.3s" onmouseover="this.style.color=&#39;rgba(184,154,90,0.8)&#39;" onmouseout="this.style.color=&#39;rgba(255,255,255,0.35)&#39;">← CREDiligence</a>
+    <div class="land-logo">CREDiligence AI &nbsp;<span>·</span>&nbsp; CloseTrackIQ</div>
+    <ul class="land-nav-links">
+      <li><a>Platform</a></li>
+      <li><a>CloseTrackIQ</a></li>
+      <li><a>Pricing</a></li>
+      <li><a onclick="goToApp()">Sign In</a></li>
+    </ul>
+    <button class="land-enter-btn" onclick="goToApp()">Enter Dashboard →</button>
+  </div>
+
+  <div class="land-hero">
+    <span class="lh-eyebrow">CloseTrackIQ · Intelligent CRE Closing Management</span>
+    <div class="lh-title">Set up your deal.<br><em>Close in 30 days.</em></div>
+    <div class="lh-sub">Configure your transaction, order all third-party reports, onboard every party, and let us handle the rest. Every document, deadline, and deliverable tracked so nothing slips.</div>
+    <div class="lh-30">
+      <div class="lh-30-num">30</div>
+      <div class="lh-30-txt">Day closes are not<br>aspirational. They're<br>our baseline.</div>
+    </div>
+  </div>
+
+  <div class="land-setup">
+
+    <!-- SECTION 1: Deal Info -->
+    <div class="ls-section">
+      <div class="ls-section-head">
+        <div class="ls-num">1</div>
+        <div>
+          <div class="ls-title">Transaction Details</div>
+          <div class="ls-subtitle">Basic deal parameters used to populate the closing checklist and timeline</div>
+        </div>
+      </div>
+      <div class="deal-form">
+        <div class="df-field full"><span class="df-lbl">Property Address</span><input class="df-input" type="text" placeholder="125 Park Avenue, New York, NY 10017" value="125 Park Avenue, New York, NY 10017"></div>
+        <div class="df-field"><span class="df-lbl">Loan Amount</span><input class="df-input" type="text" placeholder="$48,500,000" value="$48,500,000"></div>
+        <div class="df-field"><span class="df-lbl">Loan Type</span>
+          <select class="df-select">
+            <option>Senior Bridge Loan</option><option>Permanent Loan</option><option>Construction Loan</option><option>Mezzanine Loan</option><option>CMBS</option>
+          </select>
+        </div>
+        <div class="df-field"><span class="df-lbl">Property Type</span>
+          <select class="df-select">
+            <option>Office</option><option>Multifamily</option><option>Retail</option><option>Industrial</option><option>Mixed-Use</option><option>Hotel</option>
+          </select>
+        </div>
+        <div class="df-field"><span class="df-lbl">Signing / Commitment Date</span><input class="df-input" type="date" value="2025-01-06"></div>
+        <div class="df-field"><span class="df-lbl">Target Closing Date (30 Days)</span><input class="df-input" type="date" value="2025-02-05"></div>
+        <div class="df-field"><span class="df-lbl">Lender Name</span><input class="df-input" type="text" placeholder="Lender entity name" value="Blackstone Real Estate Debt Strategies"></div>
+        <div class="df-field"><span class="df-lbl">Borrower / Sponsor</span><input class="df-input" type="text" placeholder="Borrower entity name" value="125 Park Avenue LLC / DiNapoli Capital Group"></div>
+        <div class="df-field"><span class="df-lbl">Deal Nickname</span><input class="df-input" type="text" placeholder="Internal reference name" value="125 Park Bridge 2025"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Third-Party Reports -->
+    <div class="ls-section">
+      <div class="ls-section-head">
+        <div class="ls-num">2</div>
+        <div>
+          <div class="ls-title">Third-Party Reports</div>
+          <div class="ls-subtitle">Order directly from this platform or record existing orders. All tracked on the timeline.</div>
+        </div>
+      </div>
+      <div class="report-grid" id="reportGrid">
+
+        <!-- Phase I ESA -->
+        <div class="report-card ordered" id="rc-phase1">
+          <div class="rc-type">Environmental</div>
+          <div class="rc-name">Phase I Environmental Site Assessment</div>
+          <div class="rc-vendor">Standard: ASTM E1527-21</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-phase1&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="ECS Mid-Atlantic, LLC" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-07"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-21"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+        <!-- Phase II ESA -->
+        <div class="report-card" id="rc-phase2">
+          <div class="rc-type">Environmental</div>
+          <div class="rc-name">Phase II Environmental Site Assessment</div>
+          <div class="rc-vendor">If required by Phase I findings</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-phase2&#39;,this.value)">
+              <option value="not-ordered" selected="">Not Yet Ordered</option>
+              <option value="ordered">✓ Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value=""></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value=""></div>
+          </div>
+          <button class="rc-order-btn" onclick="openOrderModal(&#39;Phase II Environmental Site Assessment&#39;,&#39;Environmental&#39;)">Order Report</button>
+        </div>
+
+        <!-- MAI Appraisal -->
+        <div class="report-card ordered" id="rc-appraisal">
+          <div class="rc-type">Appraisal</div>
+          <div class="rc-name">MAI Appraisal Report</div>
+          <div class="rc-vendor">USPAP Compliant · FIRREA Requirements</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-appraisal&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="CBRE Valuation &amp; Advisory Services" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-06"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-24"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+        <!-- PCA -->
+        <div class="report-card ordered" id="rc-pca">
+          <div class="rc-type">Property Condition</div>
+          <div class="rc-name">Property Condition Assessment (PCA)</div>
+          <div class="rc-vendor">Standard: ASTM E2018-15</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-pca&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="Thornton Tomasetti" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-07"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-22"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+        <!-- PZR -->
+        <div class="report-card ordered" id="rc-pzr">
+          <div class="rc-type">Zoning</div>
+          <div class="rc-name">Planning &amp; Zoning Report (PZR)</div>
+          <div class="rc-vendor">Zoning Compliance Letter + Use Verification</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-pzr&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="Advantaged Zoning Inc." placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-07"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-20"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+        <!-- ALTA Survey -->
+        <div class="report-card ordered" id="rc-survey">
+          <div class="rc-type">Survey</div>
+          <div class="rc-name">ALTA/NSPS Land Title Survey</div>
+          <div class="rc-vendor">Table A Items: 1–4, 6, 7, 8, 11, 13, 16, 17, 18, 19</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-survey&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="Bohler Engineering" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-07"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-24"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+        <!-- Seismic / PML -->
+        <div class="report-card" id="rc-seismic">
+          <div class="rc-type">Seismic</div>
+          <div class="rc-name">Seismic Risk Assessment (PML)</div>
+          <div class="rc-vendor">Required in seismic zones. Check with your lender.</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-seismic&#39;,this.value)">
+              <option value="not-ordered" selected="">Not Required</option>
+              <option value="ordered">✓ Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value=""></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value=""></div>
+          </div>
+          <button class="rc-order-btn" onclick="openOrderModal(&#39;Seismic Risk Assessment (PML)&#39;,&#39;Seismic&#39;)">Order Report</button>
+        </div>
+
+        <!-- Flood Determination -->
+        <div class="report-card ordered" id="rc-flood">
+          <div class="rc-type">Flood</div>
+          <div class="rc-name">FEMA Flood Zone Determination</div>
+          <div class="rc-vendor">Life-of-Loan Certificate Required</div>
+          <div class="rc-status-row">
+            <select class="rc-status-sel" onchange="updateReportCard(&#39;rc-flood&#39;,this.value)">
+              <option value="ordered" selected="">✓ Ordered</option>
+              <option value="not-ordered">Not Yet Ordered</option>
+              <option value="received">Report Received</option>
+              <option value="approved">Approved</option>
+            </select>
+          </div>
+          <div class="rc-provider"><span class="rc-date-lbl">Vendor / Firm</span><input class="rc-prov-input" value="CoreLogic Flood Services" placeholder="Vendor or firm name"></div>
+          <div class="rc-dates">
+            <div class="rc-date-field"><span class="rc-date-lbl">Date Ordered</span><input class="rc-date-input" type="date" value="2025-01-07"></div>
+            <div class="rc-date-field"><span class="rc-date-lbl">Expected Due</span><input class="rc-date-input" type="date" value="2025-01-10"></div>
+          </div>
+          <button class="rc-order-btn ordered-btn">✓ Order Confirmed</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: Party Contacts -->
+    <div class="ls-section">
+      <div class="ls-section-head">
+        <div class="ls-num">3</div>
+        <div>
+          <div class="ls-title">Party Contacts</div>
+          <div class="ls-subtitle">All parties receive automated notifications and access to the closing checklist</div>
+        </div>
+      </div>
+      <div class="party-setup-grid">
+        <div class="ps-card">
+          <div class="psc-role">Lender's Counsel</div>
+          <div class="psc-fields">
+            <div class="psc-row"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="First Name" value="James"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Last Name" value="Morrison"></div>
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Email" value="jmorrison@stblaw.com">
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Firm" value="Simpson Thacher &amp; Bartlett LLP">
+          </div>
+        </div>
+        <div class="ps-card">
+          <div class="psc-role">Borrower's Counsel</div>
+          <div class="psc-fields">
+            <div class="psc-row"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="First Name" value="Alexandra"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Last Name" value="Chen"></div>
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Email" value="achen@kirkland.com">
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Firm" value="Kirkland &amp; Ellis LLP">
+          </div>
+        </div>
+        <div class="ps-card">
+          <div class="psc-role">Borrower / Sponsor</div>
+          <div class="psc-fields">
+            <div class="psc-row"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="First Name" value="Robert"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Last Name" value="DiNapoli"></div>
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Email" value="rdinapoli@dinapoligroup.com">
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Firm / Company" value="DiNapoli Capital Group">
+          </div>
+        </div>
+        <div class="ps-card">
+          <div class="psc-role">Title Officer</div>
+          <div class="psc-fields">
+            <div class="psc-row"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="First Name" value="Patricia"><input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Last Name" value="Walsh"></div>
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Email" value="p.walsh@chicagotitle.com">
+            <input class="df-input" style="font-size:12px;padding:8px 10px" placeholder="Title Company" value="Chicago Title Insurance Company">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /land-setup -->
+
+  <div class="land-launch">
+    <div class="ll-note">By launching, CloseTrackIQ will generate a 30-day closing timeline, populate the closing checklist, and send portal invitations to all parties listed above.</div>
+    <button class="ll-btn" onclick="goToApp()">
+      Launch Deal &amp; Open Dashboard
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+  </div>
+</div><!-- /#landing -->
+
+<!-- ═══════════════════════════════════════════
+     MAIN APP
+═══════════════════════════════════════════ -->
+<div class="pg" id="app">
+  <div class="sidebar">
+    <div class="sb-top">
+      <span class="sb-brand">CREDiligence AI</span>
+      <div class="sb-product">CloseTrack<em>IQ</em></div>
+      <span class="sb-tag">Intelligent Closing Management</span>
+    </div>
+    <div class="deal-pill" onclick="showToast(&#39;info&#39;,&#39;Deal Selector&#39;,&#39;Switch between active transactions.&#39;)">
+      <div class="deal-dot"></div>
+      <div class="deal-name">125 Park Ave · Bridge<br><span style="font-size:9px;color:rgba(255,255,255,0.3);font-family:&#39;Didact Gothic&#39;,sans-serif">$48.5M · Midtown Manhattan</span></div>
+      <span class="deal-arr">▾</span>
+    </div>
+    <nav class="sb-nav">
+      <span class="nav-grp-lbl">Workspace</span>
+      <button class="nav-item active" id="nav-checklist" onclick="switchView(&#39;checklist&#39;)">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg></div>
+        <span class="nav-text">Closing Checklist</span>
+        <span class="nav-badge">23 open</span>
+      </button>
+      <button class="nav-item" id="nav-timeline" onclick="switchView(&#39;timeline&#39;)">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg></div>
+        <span class="nav-text">Timeline &amp; Deadlines</span>
+      </button>
+      <button class="nav-item" id="nav-upload" onclick="openUploadPanel()">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div>
+        <span class="nav-text">Diligence Dump</span>
+      </button>
+      <button class="nav-item" id="nav-directory" onclick="switchView(&#39;directory&#39;)">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div>
+        <span class="nav-text">Party Directory</span>
+      </button>
+      <span class="nav-grp-lbl">Analysis</span>
+      <button class="nav-item" onclick="showToast(&#39;info&#39;,&#39;Status Report&#39;,&#39;Generating open items summary...&#39;)">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
+        <span class="nav-text">Status Report</span>
+      </button>
+      <button class="nav-item" onclick="goToLanding()">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+        <span class="nav-text">Deal Setup</span>
+      </button>
+      <span class="nav-grp-lbl">Notifications</span>
+      <button class="nav-item">
+        <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg></div>
+        <span class="nav-text">Notifications</span>
+        <span class="nav-badge">5</span>
+      </button>
+    </nav>
+    <div class="sb-progress">
+      <div class="prog-meta"><span class="prog-lbl">Closing Progress</span><span class="prog-pct">62%</span></div>
+      <div class="prog-bar"><div class="prog-fill" style="width:62%"></div></div>
+      <div class="prog-stats">
+        <div class="ps-s"><span class="ps-n">38</span><span class="ps-l">Received</span></div>
+        <div class="ps-sep"></div>
+        <div class="ps-s"><span class="ps-n">23</span><span class="ps-l">Awaiting</span></div>
+        <div class="ps-sep"></div>
+        <div class="ps-s"><span class="ps-n">61</span><span class="ps-l">Total</span></div>
+      </div>
+    </div>
+    <div class="sb-user">
+      <div class="user-av">JM</div>
+      <div><div class="user-name">James Morrison</div><div class="user-role">Lender's Counsel</div></div>
+      <button class="up-mini" onclick="openUploadPanel()">Upload</button>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">Closing Checklist · <em>125 Park Avenue</em></div>
+      <div class="topbar-actions">
+        <div class="filter-tabs" id="checklist-filters">
+          <button class="ft active" onclick="filterItems(&#39;all&#39;,this)">All</button>
+          <button class="ft" onclick="filterItems(&#39;outstanding&#39;,this)">Awaiting</button>
+          <button class="ft" onclick="filterItems(&#39;approved&#39;,this)">Approved</button>
+          <button class="ft" onclick="filterItems(&#39;comments&#39;,this)">Revisions</button>
+        </div>
+        <div class="tb-sep"></div>
+        <button class="tb-btn tb-btn-outline" onclick="toggleSummary()">
+          <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10"></path></svg>Summary
+        </button>
+        <button class="tb-btn tb-btn-outline" onclick="showToast(&#39;info&#39;,&#39;Export&#39;,&#39;Generating checklist PDF...&#39;)">
+          <svg viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>Export
+        </button>
+        <button class="tb-btn tb-btn-gold" onclick="openUploadPanel()">
+          <svg viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>Diligence Dump
+        </button>
+      </div>
+    </div>
+    <div class="status-legend">
+      <div class="sl-item"><span class="sl-swatch sw-approved">Approved</span><span class="sl-count">·&nbsp;20</span></div>
+      <div class="sl-sep"></div>
+      <div class="sl-item"><span class="sl-swatch sw-review">Under Review</span><span class="sl-count">·&nbsp;8</span></div>
+      <div class="sl-sep"></div>
+      <div class="sl-item"><span class="sl-swatch sw-comments">Revisions Requested</span><span class="sl-count">·&nbsp;6</span></div>
+      <div class="sl-sep"></div>
+      <div class="sl-item"><span class="sl-swatch sw-outstanding">Awaiting Receipt</span><span class="sl-count">·&nbsp;9</span></div>
+      <div class="sl-sep"></div>
+      <div class="sl-item"><span class="sl-swatch sw-pending">Processing</span><span class="sl-count">·&nbsp;1</span></div>
+      <div class="ai-badge"><div class="ai-dot"></div><span class="ai-text"><strong>Active</strong> · Auto-classifying</span></div>
+    </div>
+
+    <div class="main-content">
+
+      <!-- ═══ CHECKLIST VIEW ═══ -->
+      <div class="view active" id="view-checklist">
+        <div class="checklist-area">
+          <div class="col-header">
+            <div class="ch"></div><div class="ch">Document / Item</div>
+            <div class="ch">Responsible</div><div class="ch">Date Received</div>
+            <div class="ch">Date Reviewed</div><div class="ch">Status</div><div class="ch"></div>
+          </div>
+          <div class="checklist-wrap" id="checklist">
+
+            <div class="cat-section" id="cat-1">
+              <div class="cat-header" onclick="toggleCat(&#39;cat-1&#39;)">
+                <div class="cat-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <span class="cat-num">01</span><span class="cat-name">Loan Documents</span>
+                <div class="cat-pills"><span class="cpill cpill-done">6 Approved</span><span class="cpill cpill-open">2 Review</span><span class="cpill cpill-missing">1 Awaiting</span></div>
+                <span class="cat-pct">88%</span><div class="cat-mini-bar"><div class="cat-mini-fill" style="width:88%"></div></div>
+              </div>
+              <div class="cat-items">
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Loan Agreement&#39;,&#39;Opening document viewer...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">Loan Agreement (Execution Version)</a></div><div class="item-meta">Uploaded by Borrower's Counsel · Classified in 12s</div></div>
+                  <div class="item-party">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 14, 2025</div><div class="item-time">2:34 PM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 15, 2025</div><div class="item-time">10:21 AM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Promissory Note&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">Promissory Note</a></div><div class="item-meta">Classified in 8s</div></div>
+                  <div class="item-party">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 14, 2025</div><div class="item-time">2:34 PM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 15, 2025</div><div class="item-time">11:05 AM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row" data-status="comments">
+                  <div class="item-check"><div class="check-box"></div></div>
+                  <div class="item-name"><div class="item-title it-review"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#" onclick="event.stopPropagation()">Mortgage / Deed of Trust · Draft v3</a></div><div class="item-meta meta-cmt">Revisions returned Jan 17 · Awaiting revised draft from Borrower's Counsel</div></div>
+                  <div class="item-party">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 16, 2025</div><div class="item-time">9:15 AM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 17, 2025</div><div class="item-time">3:42 PM</div></div>
+                  <div class="item-status"><span class="status-chip sc-comments"><span class="sc-dot"></span>Revisions Requested</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;3 open threads.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row" data-status="outstanding">
+                  <div class="item-check"><div class="check-box"></div></div>
+                  <div class="item-name"><div class="item-title it-outstanding">Guaranty Agreement</div><div class="item-meta meta-out">Awaiting Submission · Borrower's Counsel Responsible · 11 Days Elapsed</div></div>
+                  <div class="item-party po">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date empty">Not yet received</div></div>
+                  <div class="item-date-cell"><div class="item-date empty">Pending</div></div>
+                  <div class="item-status"><span class="status-chip sc-outstanding"><span class="sc-dot"></span>Awaiting Receipt</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;warn&#39;,&#39;Follow-Up Sent&#39;,&#39;Reminder transmitted to Borrower&#39;s Counsel.&#39;)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg></button></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cat-section" id="cat-2">
+              <div class="cat-header" onclick="toggleCat(&#39;cat-2&#39;)">
+                <div class="cat-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <span class="cat-num">02</span><span class="cat-name">Title &amp; Survey</span>
+                <div class="cat-pills"><span class="cpill cpill-done">3 Approved</span><span class="cpill cpill-open">1 Review</span></div>
+                <span class="cat-pct">75%</span><div class="cat-mini-bar"><div class="cat-mini-fill" style="width:75%"></div></div>
+              </div>
+              <div class="cat-items">
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Title Commitment&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">Title Commitment — Chicago Title Insurance Co.</a></div><div class="item-meta">Schedule B-II exceptions identified and flagged</div></div>
+                  <div class="item-party">Title Co.</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 10, 2025</div><div class="item-time">11:22 AM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 12, 2025</div><div class="item-time">9:05 AM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row" data-status="received" onclick="showToast(&#39;info&#39;,&#39;ALTA Survey&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box"></div></div>
+                  <div class="item-name"><div class="item-title it-review"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">ALTA/NSPS Land Title Survey</a></div><div class="item-meta meta-rev">Under Attorney Review · Lender's Counsel Responsible · 3 Days Elapsed</div></div>
+                  <div class="item-party">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 17, 2025</div><div class="item-time">4:18 PM</div></div>
+                  <div class="item-date-cell"><div class="item-date empty">In review</div></div>
+                  <div class="item-status"><span class="status-chip sc-review"><span class="sc-dot"></span>Under Review</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();quickApprove(this)" title="Approve"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></button></div>
+                </div>
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Title Policy&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">ALTA Lender's Title Policy (Pro Forma)</a></div><div class="item-meta">Uploaded by Title Company · Classified in 6s</div></div>
+                  <div class="item-party">Title Co.</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 12, 2025</div><div class="item-time">3:01 PM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 13, 2025</div><div class="item-time">2:17 PM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cat-section" id="cat-3">
+              <div class="cat-header" onclick="toggleCat(&#39;cat-3&#39;)">
+                <div class="cat-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <span class="cat-num">03</span><span class="cat-name">Environmental Reports</span>
+                <div class="cat-pills"><span class="cpill cpill-done">2 Approved</span><span class="cpill cpill-open">1 Review</span></div>
+                <span class="cat-pct">66%</span><div class="cat-mini-bar"><div class="cat-mini-fill" style="width:66%"></div></div>
+              </div>
+              <div class="cat-items">
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Phase I ESA&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">Phase I Environmental Site Assessment</a></div><div class="item-meta">No RECs identified · Ordered Jan 7</div></div>
+                  <div class="item-party">Third Party</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 21, 2025</div><div class="item-time">2:10 PM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 22, 2025</div><div class="item-time">10:14 AM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row ai-processing-row" data-status="received">
+                  <div class="item-check"><div class="check-box" style="border-color:var(--blue)"></div></div>
+                  <div class="item-name">
+                    <div class="item-title" style="color:var(--blue);font-weight:600;display:flex;align-items:center;gap:6px"><div class="ai-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue);animation:aiPulse 1.5s infinite;flex-shrink:0"></div>MAI Appraisal Report · Just Uploaded</div>
+                    <div class="item-meta" style="color:var(--blue);font-weight:700;font-size:7px">Processing · Extracting appraised value, effective date and credentials</div>
+                  </div>
+                  <div class="item-party">Third Party</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 20, 2025</div><div class="item-time">Just now</div></div>
+                  <div class="item-date-cell"><div class="item-date empty">Processing...</div></div>
+                  <div class="item-status"><span class="status-chip sc-processing"><span class="sc-dot"></span>Processing</span></div>
+                  <div class="item-actions"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cat-section" id="cat-4">
+              <div class="cat-header" onclick="toggleCat(&#39;cat-4&#39;)">
+                <div class="cat-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <span class="cat-num">04</span><span class="cat-name">Entity &amp; Organizational Documents</span>
+                <div class="cat-pills"><span class="cpill cpill-done">3 Approved</span><span class="cpill cpill-missing">2 Awaiting</span></div>
+                <span class="cat-pct">60%</span><div class="cat-mini-bar"><div class="cat-mini-fill" style="width:60%"></div></div>
+              </div>
+              <div class="cat-items">
+                <div class="item-row" data-status="approved" onclick="showToast(&#39;info&#39;,&#39;Certificate of Formation&#39;,&#39;Opening document...&#39;)">
+                  <div class="item-check"><div class="check-box approved-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+                  <div class="item-name"><div class="item-title it-approved"><a href="file:///Users/buckeyekiter/Downloads/closetrackiq_index.html#">Certificate of Formation — 125 Park Avenue LLC</a></div><div class="item-meta">Classified in 9s</div></div>
+                  <div class="item-party">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date">Jan 8, 2025</div><div class="item-time">10:45 AM</div></div>
+                  <div class="item-date-cell"><div class="item-date">Jan 9, 2025</div><div class="item-time">11:30 AM</div></div>
+                  <div class="item-status"><span class="status-chip sc-approved"><span class="sc-dot"></span>Approved</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;info&#39;,&#39;Comments&#39;,&#39;Thread opened.&#39;)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></button></div>
+                </div>
+                <div class="item-row" data-status="outstanding">
+                  <div class="item-check"><div class="check-box"></div></div>
+                  <div class="item-name"><div class="item-title it-outstanding">Operating Agreement (Certified Copy)</div><div class="item-meta meta-out">Awaiting Submission · Borrower's Counsel Responsible · 14 Days Elapsed</div></div>
+                  <div class="item-party po">Borrower</div>
+                  <div class="item-date-cell"><div class="item-date empty">Not yet received</div></div>
+                  <div class="item-date-cell"><div class="item-date empty">Pending</div></div>
+                  <div class="item-status"><span class="status-chip sc-outstanding"><span class="sc-dot"></span>Awaiting Receipt</span></div>
+                  <div class="item-actions"><button class="ia-btn" onclick="event.stopPropagation();showToast(&#39;warn&#39;,&#39;Follow-Up Sent&#39;,&#39;Reminder transmitted to Borrower&#39;s Counsel.&#39;)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg></button></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ TIMELINE VIEW ═══ -->
+      <div class="view" id="view-timeline">
+        <div class="tl-header">
+          <div class="tl-h-top">
+            <div class="tl-h-left">
+              <span class="tl-eyebrow">CloseTrackIQ · 30-Day Closing Timeline</span>
+              <div class="tl-title">125 Park Avenue</div>
+              <div class="tl-sub">Senior Bridge Loan · $48.5M · Target Close: February 5, 2025</div>
+            </div>
+            <div class="tl-stats">
+              <div class="tls"><div class="tls-n green">14</div><div class="tls-l">Day 14</div></div>
+              <div class="tls"><div class="tls-n yellow">16</div><div class="tls-l">Days Left</div></div>
+              <div class="tls"><div class="tls-n red">4</div><div class="tls-l">Overdue</div></div>
+              <div class="tls"><div class="tls-n">62%</div><div class="tls-l">Complete</div></div>
+            </div>
+          </div>
+          <!-- 30-day bar -->
+          <div style="padding:0 0 6px">
+            <div class="tl-pg-lbl"><span class="tl-pg-label">Day 1 · Commitment</span><span class="tl-pg-days">Day 14 of 30 · Jan 20, 2025</span><span class="tl-pg-label">Day 30 · Closing</span></div>
+            <div class="tl-pg-bar">
+              <div class="tl-pg-fill" style="width:47%"></div>
+              <div class="tl-pg-today" style="left:47%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:4px;position:relative">
+              <span style="font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-faint)">Jan 6</span>
+              <span style="position:absolute;left:25%;font-size:6.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-faint);transform:translateX(-50%)">Reports Due</span>
+              <span style="position:absolute;left:47%;font-size:6.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--outstanding);transform:translateX(-50%);font-weight:700">TODAY</span>
+              <span style="position:absolute;left:70%;font-size:6.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-faint);transform:translateX(-50%)">Docs Due</span>
+              <span style="font-size:6.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-faint)">Feb 5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-wrap">
+          <div class="tl-body">
+
+            <!-- WEEK 1 -->
+            <div class="tl-month"><div class="tl-month-lbl">Week 1 · Engagement &amp; Ordering (Days 1–7 · Jan 6–12)</div></div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">6</div><div class="tl-weekday">Mon · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gold"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;Commitment Date&#39;,&#39;Deal commitment signed and executed.&#39;)">
+                <div class="tl-cat">Milestone</div>
+                <div class="tl-event ev-gold">Commitment Letter Executed · Day 1 Clock Starts</div>
+                <div class="tl-note">Lender commitment issued · All parties engaged · CloseTrackIQ timeline activated</div>
+                <span class="tl-chip tc-gold">Milestone</span>
+              </div>
+              <div class="tl-badge-col"><span class="milestone-flag">Day 1</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">7</div><div class="tl-weekday">Tue · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Reports Ordered&#39;,&#39;Phase I ESA, PCA, ALTA Survey, PZR, and Flood Determination all ordered.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Ordered</div>
+                <div class="tl-event ev-approved">Phase I ESA · PCA · ALTA/NSPS Survey · PZR · Flood Determination · All Ordered</div>
+                <div class="tl-note">ECS Mid-Atlantic (ESA) · Thornton Tomasetti (PCA) · Bohler Engineering (Survey) · Advantaged Zoning Inc. (PZR) · CoreLogic (Flood) · All vendors confirmed</div>
+                <span class="tl-chip tc-approved">5 Reports Ordered</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">Day 2</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">6</div><div class="tl-weekday">Mon · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Appraisal Ordered&#39;,&#39;MAI Appraisal ordered from CBRE Valuation.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Ordered</div>
+                <div class="tl-event ev-approved">MAI Appraisal Report · Ordered</div>
+                <div class="tl-note">Vendor: CBRE Valuation &amp; Advisory Services · Sandra Okafor, MAI · Expected: Jan 24 (Day 18)</div>
+                <span class="tl-chip tc-approved">Ordered Day 1</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">Appraisal</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">8</div><div class="tl-weekday">Wed · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Title&#39;,&#39;Title commitment received and search ordered.&#39;)">
+                <div class="tl-cat">Title</div>
+                <div class="tl-event ev-approved">Title Search Ordered · Title Commitment Received</div>
+                <div class="tl-note">Chicago Title Insurance Company · Patricia Walsh, Sr. Commercial Title Officer · Schedule A and B exceptions under review</div>
+                <span class="tl-chip tc-approved">Received</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">8</div><div class="tl-weekday">Wed · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Entity Docs&#39;,&#39;Certificate of Formation and Good Standing received.&#39;)">
+                <div class="tl-cat">Entity Documents</div>
+                <div class="tl-event ev-approved">Certificate of Formation &amp; Good Standing Certificates · Received</div>
+                <div class="tl-note">Delaware Certificate · Foreign Qualification (NY) still outstanding · follow-up transmitted</div>
+                <span class="tl-chip tc-approved">Partially Complete</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">10</div><div class="tl-weekday">Fri · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Flood&#39;,&#39;FEMA Flood Zone Determination received in 3 days.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Received</div>
+                <div class="tl-event ev-approved">FEMA Flood Zone Determination · Received</div>
+                <div class="tl-note">CoreLogic Flood Services · Life-of-loan certificate · Zone AE · Flood insurance required · Received in 3 days</div>
+                <span class="tl-chip tc-approved">Received Day 4</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">Flood Det.</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">12</div><div class="tl-weekday">Sun · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gold"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;Deadline&#39;,&#39;Rate Lock expires. Contact lender to extend if needed.&#39;)">
+                <div class="tl-cat">Deadline</div>
+                <div class="tl-event ev-gold">Rate Lock Confirmation Deadline</div>
+                <div class="tl-note">Confirm rate lock with lender or request extension. Confirmed Jan 11.</div>
+                <span class="tl-chip tc-gold">Completed</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <!-- WEEK 2 -->
+            <div class="tl-month" style="margin-top:16px"><div class="tl-month-lbl">Week 2 · Report Receipt &amp; Document Exchange (Days 8–14 · Jan 13–19)</div></div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">13</div><div class="tl-weekday">Mon · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Loan Docs&#39;,&#39;Loan Agreement and Promissory Note circulated.&#39;)">
+                <div class="tl-cat">Loan Documents</div>
+                <div class="tl-event ev-approved">First Draft Loan Documents Circulated · Loan Agreement, Note, Mortgage</div>
+                <div class="tl-note">Lender's Counsel circulated to Borrower's Counsel · Comment period commenced · Target turnaround 5 business days</div>
+                <span class="tl-chip tc-approved">Circulated</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">14</div><div class="tl-weekday">Tue · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot approved"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;success&#39;,&#39;Loan Agreement&#39;,&#39;Loan Agreement and Note executed.&#39;)">
+                <div class="tl-cat">Loan Documents · Executed</div>
+                <div class="tl-event ev-approved">Loan Agreement (Execution) &amp; Promissory Note · Uploaded &amp; Approved</div>
+                <div class="tl-note">Borrower's Counsel uploaded · Approved by Lender's Counsel Jan 15</div>
+                <span class="tl-chip tc-approved">Approved</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">16</div><div class="tl-weekday">Thu · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot review"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;Mortgage&#39;,&#39;Mortgage Draft v3 under review · comments returned.&#39;)">
+                <div class="tl-cat">Loan Documents · Under Negotiation</div>
+                <div class="tl-event ev-review">Mortgage / Deed of Trust Draft v3 · Revisions Requested</div>
+                <div class="tl-note">Comments returned by Lender's Counsel Jan 17 · 3 open issues · Revised draft due by Jan 22</div>
+                <span class="tl-chip tc-review">Revisions Pending</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Due Jan 22</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">17</div><div class="tl-weekday">Fri · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot review"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;ALTA Survey&#39;,&#39;ALTA Survey received · under attorney review.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Received</div>
+                <div class="tl-event ev-review">ALTA/NSPS Land Title Survey · Received · Under Attorney Review</div>
+                <div class="tl-note">Bohler Engineering · Delivered Day 11 · Under Lender's Counsel review · 3 days elapsed · Expected approval by Jan 22</div>
+                <span class="tl-chip tc-review">Under Review</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">Survey</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">19</div><div class="tl-weekday">Sun · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot outstanding"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;warn&#39;,&#39;Insurance&#39;,&#39;Flood insurance still outstanding · follow-up sent.&#39;)">
+                <div class="tl-cat">Insurance · Overdue</div>
+                <div class="tl-event ev-deadline">Insurance Binders Deadline · OVERDUE</div>
+                <div class="tl-note">Property Insurance (ACORD 28) &amp; Flood Insurance Certificate still outstanding · Second follow-up transmitted to Borrower's Counsel</div>
+                <span class="tl-chip tc-outstanding">Overdue</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">OVERDUE</span></div>
+            </div>
+
+            <!-- TODAY BAND -->
+            <div class="tl-today-band">
+              <div class="tl-today-label">TODAY</div>
+              <div class="tl-today-spine"><div class="tl-today-dot-lg"></div></div>
+              <div class="tl-today-content">January 20, 2025 · Day 14 of 30</div>
+              <div class="tl-today-right">16 Days to Close</div>
+            </div>
+
+            <!-- WEEK 3 -->
+            <div class="tl-month" style="margin-top:16px"><div class="tl-month-lbl">Week 3 · Report Completion &amp; Final Docs (Days 15–21 · Jan 20–26)</div></div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">20</div><div class="tl-weekday">Mon · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;PZR&#39;,&#39;Planning &amp; Zoning Report expected today.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Due</div>
+                <div class="tl-event ev-gold">Planning &amp; Zoning Report (PZR) · Expected</div>
+                <div class="tl-note">Advantaged Zoning Inc. · Ordered Jan 7 (Day 2) · Expected receipt today · Awaiting delivery</div>
+                <span class="tl-chip tc-blue">Expected Today</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">PZR Due</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">21</div><div class="tl-weekday">Tue · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;Phase I ESA&#39;,&#39;Phase I ESA due from ECS Mid-Atlantic.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Due</div>
+                <div class="tl-event ev-gold">Phase I ESA Final Report · Expected</div>
+                <div class="tl-note">ECS Mid-Atlantic · T. Greer, REP · Ordered Jan 7 · Due Jan 21 · No RECs anticipated based on preliminary assessment</div>
+                <span class="tl-chip tc-blue">Expected Jan 21</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">ESA Due</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">22</div><div class="tl-weekday">Wed · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;PCA&#39;,&#39;Property Condition Assessment due from Thornton Tomasetti.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Due</div>
+                <div class="tl-event ev-gold">Property Condition Assessment (PCA) · Expected</div>
+                <div class="tl-note">Thornton Tomasetti · Ordered Jan 7 · Due Jan 22 · Immediate repair estimates anticipated: ~$124K</div>
+                <span class="tl-chip tc-blue">Expected Jan 22</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">PCA Due</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">22</div><div class="tl-weekday">Wed · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Loan Documents</div>
+                <div class="tl-event">Mortgage / DOT Revised Draft Due from Borrower's Counsel</div>
+                <div class="tl-note">Comments returned Jan 17 · Revised draft must be submitted by Jan 22 to stay on 30-day track</div>
+                <span class="tl-chip tc-outstanding">Deadline</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Hard Deadline</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">23</div><div class="tl-weekday">Thu · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Insurance</div>
+                <div class="tl-event it-outstanding" style="color:var(--outstanding);font-weight:700">All Insurance Binders · Final Deadline</div>
+                <div class="tl-note">Property Insurance (ACORD 28) · Flood Insurance Certificate · Must be received by Jan 23 to remain on track for Feb 5 close</div>
+                <span class="tl-chip tc-outstanding">Hard Deadline</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Hard Deadline</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">24</div><div class="tl-weekday">Fri · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+              <div class="tl-content" onclick="showToast(&#39;info&#39;,&#39;Appraisal &amp; Survey&#39;,&#39;MAI Appraisal and ALTA Survey both due Jan 24.&#39;)">
+                <div class="tl-cat">Third-Party Reports · Due</div>
+                <div class="tl-event ev-gold">MAI Appraisal Report &amp; ALTA Survey Final · Expected</div>
+                <div class="tl-note">CBRE Valuation (Appraisal) · Bohler Engineering (Survey) · Both due Jan 24 · Survey already received · approval pending</div>
+                <span class="tl-chip tc-blue">Expected Jan 24</span>
+              </div>
+              <div class="tl-badge-col"><span class="report-flag">Appraisal Due</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">25</div><div class="tl-weekday">Sat · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Entity Documents</div>
+                <div class="tl-event">Operating Agreement &amp; Foreign Qualification · Final Deadline</div>
+                <div class="tl-note">Both items outstanding · Borrower's Counsel notified · 14 days elapsed · Must be received by Jan 25</div>
+                <span class="tl-chip tc-outstanding">Overdue</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Overdue</span></div>
+            </div>
+
+            <!-- WEEK 4 -->
+            <div class="tl-month" style="margin-top:16px"><div class="tl-month-lbl">Week 4 · Final Review &amp; Pre-Close (Days 22–28 · Jan 27–Feb 2)</div></div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">27</div><div class="tl-weekday">Mon · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">All Documents</div>
+                <div class="tl-event">All Diligence Items &amp; Third-Party Reports · Final Receipt Deadline</div>
+                <div class="tl-note">All outstanding checklist items must be received and submitted by Jan 27 for lender review prior to closing</div>
+                <span class="tl-chip tc-outstanding">Hard Deadline</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Day 21</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">28</div><div class="tl-weekday">Tue · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Closing Documents</div>
+                <div class="tl-event">Closing Instructions Issued · Funding Authorization Prepared</div>
+                <div class="tl-note">Title company closing instructions circulated · Lender wire instructions confirmed · Closing statement drafted</div>
+                <span class="tl-chip tc-gray">Upcoming</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">30</div><div class="tl-weekday">Thu · Jan</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Pre-Close</div>
+                <div class="tl-event">Final Checklist Review · All Items Must Be Approved</div>
+                <div class="tl-note">Lender's Counsel final sign-off · Title company rundown · UCC, tax lien, and judgment search results confirmed · Pre-close walk-through</div>
+                <span class="tl-chip tc-gray">Upcoming</span>
+              </div>
+              <div class="tl-badge-col"><span class="deadline-flag">Day 24</span></div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">3</div><div class="tl-weekday">Mon · Feb</div></div>
+              <div class="tl-spine"><div class="tl-dot gray"></div><div class="tl-line"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">Pre-Close</div>
+                <div class="tl-event">Closing Documents Executed · Funding Authorization Confirmed</div>
+                <div class="tl-note">All loan documents executed · Wire instructions verified · Title holds confirmed · Funding authorization issued by lender</div>
+                <span class="tl-chip tc-gray">Upcoming</span>
+              </div>
+              <div class="tl-badge-col"></div>
+            </div>
+
+            <!-- CLOSING -->
+            <div class="tl-month" style="margin-top:16px"><div class="tl-month-lbl">Closing Day · Day 30 · February 5, 2025</div></div>
+
+            <div class="tl-item">
+              <div class="tl-date-col"><div class="tl-day">5</div><div class="tl-weekday">Wed · Feb</div></div>
+              <div class="tl-spine"><div class="tl-dot gold" style="width:14px;height:14px;box-shadow:0 0 0 4px rgba(184,154,90,0.2)"></div></div>
+              <div class="tl-content">
+                <div class="tl-cat">🎯 Target Closing Date</div>
+                <div class="tl-event ev-gold" style="font-size:16px">CLOSING DAY · Loan Funded · Documents Recorded</div>
+                <div class="tl-note">Wire transfer confirmed · Deed and Mortgage recorded · Title policy issued · Loan funded · Deal closed in 30 days</div>
+                <span class="tl-chip tc-gold" style="font-size:8px;padding:4px 10px">Day 30 · Target Close</span>
+              </div>
+              <div class="tl-badge-col"><span class="milestone-flag" style="font-size:8px;padding:5px 12px">Closing Day</span></div>
+            </div>
+
+          </div><!-- /tl-body -->
+        </div><!-- /timeline-wrap -->
+      </div><!-- /view-timeline -->
+
+      <!-- ═══ PARTY DIRECTORY VIEW ═══ -->
+      <div class="view" id="view-directory">
+        <div class="party-topbar">
+          <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:16px;font-weight:400">Party Directory · <em style="font-style:italic;color:var(--gold)">125 Park Avenue</em></div>
+          <div class="party-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Search parties..." oninput="filterParties(this.value)">
+          </div>
+        </div>
+        <div class="party-wrap" id="partyWrap">
+          <div class="party-section">
+            <div class="ps-head">
+              <div class="ps-icon psi-lender"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg></div>
+              <div><div class="ps-label">Lender</div><div class="ps-sublabel">Blackstone Real Estate Debt Strategies · Senior Lender</div></div>
+            </div>
+            <div class="party-grid">
+              <div class="party-card" data-name="marcus whitfield blackstone lender">
+                <div class="pc-av av-lender">MW</div>
+                <div class="pc-name">Marcus T. Whitfield</div>
+                <div class="pc-title-txt">Senior Managing Director</div>
+                <div class="pc-firm">Blackstone Real Estate Debt Strategies</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:m.whitfield@blackstone.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">m.whitfield@blackstone.com</span></a>
+                  <a class="pc-link" href="tel:+12125551847"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-1847</span></a>
+                </div>
+                <span class="pc-badge badge-lender">Lender · Primary Contact</span>
+              </div>
+              <div class="party-card" data-name="jennifer park blackstone lender">
+                <div class="pc-av av-lender">JP</div>
+                <div class="pc-name">Jennifer S. Park</div>
+                <div class="pc-title-txt">VP, Loan Originations</div>
+                <div class="pc-firm">Blackstone Real Estate Debt Strategies</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:j.park@blackstone.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">j.park@blackstone.com</span></a>
+                  <a class="pc-link" href="tel:+12125551924"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-1924</span></a>
+                </div>
+                <span class="pc-badge badge-lender">Lender · Transactions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="party-section">
+            <div class="ps-head">
+              <div class="ps-icon psi-counsel"><svg viewBox="0 0 24 24"><path d="M12 1l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"></path></svg></div>
+              <div><div class="ps-label">Legal Counsel</div><div class="ps-sublabel">Lender's Counsel · Borrower's Counsel</div></div>
+            </div>
+            <div class="party-grid">
+              <div class="party-card" data-name="james morrison simpson thacher lender counsel">
+                <div class="pc-av av-counsel">JM</div>
+                <div class="pc-name">James B. Morrison</div>
+                <div class="pc-title-txt">Partner, Real Estate Finance</div>
+                <div class="pc-firm">Simpson Thacher &amp; Bartlett LLP</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:jmorrison@stblaw.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">jmorrison@stblaw.com</span></a>
+                  <a class="pc-link" href="tel:+12125552241"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-2241</span></a>
+                </div>
+                <span class="pc-badge badge-counsel">Lender's Counsel</span>
+              </div>
+              <div class="party-card" data-name="alexandra chen kirkland borrower counsel">
+                <div class="pc-av av-counsel">AC</div>
+                <div class="pc-name">Alexandra R. Chen</div>
+                <div class="pc-title-txt">Partner, Real Estate</div>
+                <div class="pc-firm">Kirkland &amp; Ellis LLP</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:achen@kirkland.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">achen@kirkland.com</span></a>
+                  <a class="pc-link" href="tel:+12125556782"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-6782</span></a>
+                </div>
+                <span class="pc-badge badge-counsel">Borrower's Counsel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="party-section">
+            <div class="ps-head">
+              <div class="ps-icon psi-third"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg></div>
+              <div><div class="ps-label">Third-Party Consultants</div><div class="ps-sublabel">Environmental · Appraisal · Structural · Survey · Zoning · Flood</div></div>
+            </div>
+            <div class="party-grid">
+              <div class="party-card" data-name="thomas greer ecs environmental">
+                <div class="pc-av av-third">TG</div>
+                <div class="pc-name">Thomas R. Greer, REP</div>
+                <div class="pc-title-txt">Principal Environmental Consultant</div>
+                <div class="pc-firm">ECS Mid-Atlantic, LLC · Phase I &amp; II ESA</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:tgreer@ecslimited.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">tgreer@ecslimited.com</span></a>
+                  <a class="pc-link" href="tel:+12125557843"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-7843</span></a>
+                </div>
+                <span class="pc-badge badge-third">Environmental · ESA</span>
+              </div>
+              <div class="party-card" data-name="sandra okafor mai cbre appraisal">
+                <div class="pc-av av-third">SO</div>
+                <div class="pc-name">Sandra E. Okafor, MAI</div>
+                <div class="pc-title-txt">Senior Appraiser</div>
+                <div class="pc-firm">CBRE Valuation &amp; Advisory Services · MAI Appraisal</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:s.okafor@cbre.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">s.okafor@cbre.com</span></a>
+                  <a class="pc-link" href="tel:+12125556104"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-6104</span></a>
+                </div>
+                <span class="pc-badge badge-third">Appraiser · MAI</span>
+              </div>
+              <div class="party-card" data-name="kevin lam surveyor bohler alta">
+                <div class="pc-av av-third">KL</div>
+                <div class="pc-name">Kevin J. Lam, PLS</div>
+                <div class="pc-title-txt">Licensed Professional Surveyor</div>
+                <div class="pc-firm">Bohler Engineering · ALTA/NSPS Survey</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:klam@bohlereng.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">klam@bohlereng.com</span></a>
+                  <a class="pc-link" href="tel:+12125558830"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-8830</span></a>
+                </div>
+                <span class="pc-badge badge-third">Surveyor · ALTA/NSPS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="party-section">
+            <div class="ps-head">
+              <div class="ps-icon psi-title"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+              <div><div class="ps-label">Title Company</div><div class="ps-sublabel">Chicago Title Insurance Company</div></div>
+            </div>
+            <div class="party-grid">
+              <div class="party-card" data-name="patricia walsh chicago title">
+                <div class="pc-av av-title">PW</div>
+                <div class="pc-name">Patricia L. Walsh</div>
+                <div class="pc-title-txt">Senior Commercial Title Officer</div>
+                <div class="pc-firm">Chicago Title Insurance Company</div>
+                <div class="pc-contacts">
+                  <a class="pc-link" href="mailto:p.walsh@chicagotitle.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="pc-link-text email">p.walsh@chicagotitle.com</span></a>
+                  <a class="pc-link" href="tel:+12125554411"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.24 2a2 2 0 012-1.72h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg><span class="pc-link-text">+1 (212) 555-4411</span></a>
+                </div>
+                <span class="pc-badge badge-title">Title · Primary Contact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Panel -->
+      <div class="sum-panel" id="sumPanel" style="display:none">
+        <div class="sp-head"><span class="sph-lbl">Transaction Summary</span><div class="sph-title">125 Park Avenue</div></div>
+        <div class="sp-sect">
+          <span class="sps-lbl">Pending Responsibility</span>
+          <div class="court-item"><div><div class="ci-party">Borrower's Counsel</div><div class="ci-sub urgent">Avg. 14 days elapsed</div></div><div class="ci-count red">14</div></div>
+          <div class="court-item"><div><div class="ci-party">Lender's Counsel</div><div class="ci-sub">Avg. 3 days elapsed</div></div><div class="ci-count yellow">7</div></div>
+          <div class="court-item"><div><div class="ci-party">Third-Party Consultants</div><div class="ci-sub">Avg. 1 day elapsed</div></div><div class="ci-count">2</div></div>
+        </div>
+        <div class="sp-sect">
+          <span class="sps-lbl">30-Day Key Deadlines</span>
+          <div class="dead-item"><div class="di-label">PZR Expected</div><div class="di-date soon">Jan 20</div></div>
+          <div class="dead-item"><div class="di-label">Phase I ESA Due</div><div class="di-date soon">Jan 21</div></div>
+          <div class="dead-item"><div class="di-label">PCA Due</div><div class="di-date soon">Jan 22</div></div>
+          <div class="dead-item"><div class="di-label">Mortgage Draft Due</div><div class="di-date soon">Jan 22</div></div>
+          <div class="dead-item"><div class="di-label">Insurance Binders</div><div class="di-date past">OVERDUE</div></div>
+          <div class="dead-item"><div class="di-label">Appraisal Due</div><div class="di-date soon">Jan 24</div></div>
+          <div class="dead-item"><div class="di-label">All Docs Final</div><div class="di-date">Jan 27</div></div>
+          <div class="dead-item"><div class="di-label">Target Closing</div><div class="di-date">Feb 5, 2025</div></div>
+        </div>
+        <div class="sp-sect">
+          <span class="sps-lbl">Recent Activity</span>
+          <div class="act-item"><div class="ac-time">2 min ago</div><div class="ac-text"><strong>CloseTrackIQ</strong> processing MAI Appraisal</div></div>
+          <div class="act-item"><div class="ac-time">47 min ago</div><div class="ac-text"><strong>Phase II ESA</strong> received from ECS</div></div>
+          <div class="act-item"><div class="ac-time">2 hours ago</div><div class="ac-text">Revisions returned on <strong>Mortgage v3</strong></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div><!-- /#app -->
+
+</div><!-- /.pages -->
+
+<!-- ═══ UPLOAD PANEL ═══ -->
+<div class="upload-overlay" id="uploadOverlay" onclick="closeUploadPanel()"></div>
+<div class="upload-panel" id="uploadPanel">
+  <div class="up-head">
+    <span class="up-logo">CloseTrackIQ · CREDiligence AI</span>
+    <div class="up-title">Diligence Dump</div>
+    <div class="up-sub">Drop any docs · PDFs, Word, images.<br>Documents are identified and the checklist updates automatically.</div>
+    <button class="up-close" onclick="closeUploadPanel()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  </div>
+  <div class="up-body">
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById(&#39;file-input&#39;).click()" ondragover="dov(event)" ondragleave="dlv()" ondrop="hdrop(event)">
+      <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></div>
+      <div class="drop-main">Drop files anywhere</div>
+      <div class="drop-sub">or click to browse</div>
+      <div class="drop-types"><span class="type-tag">PDF</span><span class="type-tag">DOCX</span><span class="type-tag">XLSX</span><span class="type-tag">JPG/PNG</span><span class="type-tag">TIF</span></div>
+    </div>
+    <div class="ai-note">
+      <div class="ain-head"><div class="ain-dot"></div><span class="ain-title">No Labeling Required</span></div>
+      <div class="ain-body">We read each document, identify it, extract key data, and automatically update the closing checklist. Typically within 30 to 60 seconds per document.</div>
+    </div>
+    <div class="queued-files" id="queuedFiles" style="display:none">
+      <div class="qf-head"><span id="queuedCount">0 files queued</span><button class="qf-clear" onclick="clearFiles()">Clear All</button></div>
+      <div id="fileList"></div>
+    </div>
+  </div>
+  <div class="up-foot">
+    <button class="up-submit" onclick="submitFiles()"><span>Analyze &amp; Update Checklist</span></button>
+    <div class="up-hint">End-to-end encrypted · SOC 2 Type II</div>
+  </div>
+</div>
+<input type="file" id="file-input" multiple="" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.tif,.tiff" onchange="handleFileInput(this.files)">
+
+<!-- ═══ ORDER MODAL ═══ -->
+<div class="order-modal" id="orderModal" onclick="closeOrderModal(event)">
+  <div class="order-backdrop"></div>
+  <div class="order-box">
+    <div class="ob-head">
+      <div><div class="ob-logo">CloseTrackIQ · Report Ordering</div><div class="ob-title" id="om-title">Order Report</div></div>
+      <button class="ob-close" onclick="closeOrderModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <div class="ob-body">
+      <div class="ob-field"><span class="ob-lbl">Report Type</span><input class="ob-input" id="om-type" readonly=""></div>
+      <div class="ob-field"><span class="ob-lbl">Vendor / Firm</span><input class="ob-input" id="om-vendor" placeholder="Enter vendor or firm name"></div>
+      <div class="ob-field"><span class="ob-lbl">Contact Name</span><input class="ob-input" id="om-contact" placeholder="Primary contact name"></div>
+      <div class="ob-field"><span class="ob-lbl">Contact Email</span><input class="ob-input" id="om-email" type="email" placeholder="vendor@firm.com"></div>
+      <div class="ob-row">
+        <div class="ob-field"><span class="ob-lbl">Date Needed By</span><input class="ob-input" id="om-due" type="date"></div>
+        <div class="ob-field"><span class="ob-lbl">Property Address</span><input class="ob-input" id="om-addr" value="125 Park Avenue, New York, NY 10017"></div>
+      </div>
+      <div class="ob-field"><span class="ob-lbl">Special Instructions</span><input class="ob-input" id="om-notes" placeholder="Any specific requirements or scope notes..."></div>
+    </div>
+    <div class="ob-foot">
+      <button class="ob-cancel" onclick="closeOrderModal()">Cancel</button>
+      <button class="ob-order" onclick="confirmOrder()">Transmit Order Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast-stack" id="toastStack"></div>
+
+<script>
+// ── PAGE SYSTEM ──
+let currentPage = 'landing';
+function goToApp(){
+  const l=document.getElementById('landing');
+  const a=document.getElementById('app');
+  l.classList.add('out');l.classList.remove('active');
+  setTimeout(()=>{l.classList.remove('out');a.classList.add('active');},800);
+  currentPage='app';
+  setTimeout(()=>showToast('success','Deal Launched','CloseTrackIQ activated · 30-day timeline generated · All parties notified.'),900);
+  setTimeout(()=>showToast('info','Monitoring Active','Your closing checklist is live and being tracked.'),3000);
+}
+function goToLanding(){
+  const l=document.getElementById('landing');
+  const a=document.getElementById('app');
+  a.classList.remove('active');l.classList.add('active');
+  currentPage='landing';
+}
+
+// ── VIEW SWITCHING ──
+function switchView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const ni=document.getElementById('nav-'+v);
+  if(ni)ni.classList.add('active');
+  const titles={checklist:'Closing Checklist · <em>125 Park Avenue</em>',timeline:'Timeline &amp; Deadlines · <em>125 Park Avenue</em>',directory:'Party Directory · <em>125 Park Avenue</em>'};
+  document.getElementById('topbar-title').innerHTML=titles[v]||'';
+  document.getElementById('checklist-filters').style.display=v==='checklist'?'flex':'none';
+}
+function toggleCat(id){document.getElementById(id).classList.toggle('collapsed')}
+function filterItems(t,btn){
+  document.querySelectorAll('.ft').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.item-row').forEach(row=>{
+    if(t==='all'){row.style.display='';return;}
+    const s=row.dataset.status;
+    row.style.display=((t==='outstanding'&&s==='outstanding')||(t==='approved'&&s==='approved')||(t==='comments'&&(s==='comments'||s==='received')))?'':'none';
+  });
+}
+let summaryOpen=false;
+function toggleSummary(){
+  summaryOpen=!summaryOpen;
+  const p=document.getElementById('sumPanel');
+  p.style.display=summaryOpen?'flex':'none';
+  if(summaryOpen)p.style.flexDirection='column';
+}
+function quickApprove(btn){
+  const row=btn.closest('.item-row');
+  row.querySelector('.status-chip').className='status-chip sc-approved';
+  row.querySelector('.status-chip').innerHTML='<span class="sc-dot"></span>Approved';
+  const cb=row.querySelector('.check-box');
+  cb.className='check-box approved-cb';
+  cb.innerHTML='<svg viewBox="0 0 24 24" style="width:8px;height:8px;fill:none;stroke:#fff;stroke-width:2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+  const ti=row.querySelector('.item-title');
+  if(ti)ti.className='item-title it-approved';
+  row.dataset.status='approved';
+  showToast('success','Approved','Document approved. Parties notified.');
+}
+
+// ── UPLOAD ──
+function openUploadPanel(){document.getElementById('uploadOverlay').classList.add('open');document.getElementById('uploadPanel').classList.add('open')}
+function closeUploadPanel(){document.getElementById('uploadOverlay').classList.remove('open');document.getElementById('uploadPanel').classList.remove('open')}
+function dov(e){e.preventDefault();document.getElementById('dropZone').classList.add('dragover')}
+function dlv(){document.getElementById('dropZone').classList.remove('dragover')}
+function hdrop(e){e.preventDefault();dlv();handleFileInput(e.dataTransfer.files)}
+function handleFileInput(files){
+  if(!files.length)return;
+  const list=document.getElementById('fileList');
+  document.getElementById('queuedFiles').style.display='block';
+  Array.from(files).forEach(file=>{
+    const ext=file.name.split('.').pop().toUpperCase();
+    let cls='fi-other',ico=ext;
+    if(ext==='PDF'){cls='fi-pdf';ico='PDF'}else if(['DOC','DOCX'].includes(ext)){cls='fi-doc';ico='DOC'}else if(['JPG','JPEG','PNG','TIF','TIFF'].includes(ext)){cls='fi-img';ico='IMG'}
+    const sz=file.size>1048576?(file.size/1048576).toFixed(1)+' MB':Math.round(file.size/1024)+' KB';
+    const id='fi'+Date.now()+Math.random().toString(36).slice(2,5);
+    const el=document.createElement('div');el.className='file-item';el.id=id;
+    el.innerHTML=`<div class="fi-icon ${cls}">${ico}</div><div class="fi-info"><div class="fi-name">${file.name}</div><div class="fi-size">${sz}</div><div class="fi-progress"><div class="fi-prog-fill" style="width:0%"></div></div></div><div class="fi-status fi-processing">Queued</div><button class="fi-remove" onclick="document.getElementById('${id}').remove();updateQ()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    list.appendChild(el);
+  });updateQ();
+}
+function clearFiles(){document.getElementById('fileList').innerHTML='';document.getElementById('queuedFiles').style.display='none'}
+function updateQ(){const n=document.getElementById('fileList').children.length;document.getElementById('queuedCount').textContent=n+' file'+(n!==1?'s':'')+' queued'}
+function submitFiles(){
+  const n=document.getElementById('fileList').children.length;
+  if(!n){showToast('warn','No Files','Please add at least one file.');return;}
+  closeUploadPanel();
+  showToast('info','Upload In Progress',n+' document'+(n!==1?'s':'')+' transmitted for classification.');
+  setTimeout(()=>showToast('success','Analysis Complete','All documents classified. Checklist updated.'),4000);
+}
+
+// ── REPORT CARD STATUS ──
+function updateReportCard(id,val){
+  const card=document.getElementById(id);
+  const btn=card.querySelector('.rc-order-btn');
+  if(val==='ordered'||val==='received'||val==='approved'){
+    card.classList.add('ordered');
+    btn.className='rc-order-btn ordered-btn';
+    btn.textContent='✓ Order Confirmed';
+    btn.onclick=null;
+  } else {
+    card.classList.remove('ordered');
+    btn.className='rc-order-btn';
+    btn.textContent='Order Report';
+    const name=card.querySelector('.rc-name').textContent;
+    const type=card.querySelector('.rc-type').textContent;
+    btn.onclick=()=>openOrderModal(name,type);
+  }
+}
+
+// ── ORDER MODAL ──
+let currentOrderName='';
+function openOrderModal(name,type){
+  currentOrderName=name;
+  document.getElementById('om-title').textContent='Order · '+name;
+  document.getElementById('om-type').value=type+' · '+name;
+  document.getElementById('orderModal').classList.add('open');
+}
+function closeOrderModal(e){
+  if(e&&e.target!==e.currentTarget&&!e.target.classList.contains('order-backdrop'))return;
+  document.getElementById('orderModal').classList.remove('open');
+}
+function confirmOrder(){
+  const vendor=document.getElementById('om-vendor').value||'Selected Vendor';
+  document.getElementById('orderModal').classList.remove('open');
+  showToast('success','Order Transmitted',`${currentOrderName} order sent to ${vendor}. Confirmation email transmitted.`);
+}
+
+// ── PARTY SEARCH ──
+function filterParties(q){
+  const t=q.toLowerCase();
+  document.querySelectorAll('.party-card').forEach(c=>{
+    c.style.display=(!t||(c.dataset.name+''+c.textContent).toLowerCase().includes(t))?'':'none';
+  });
+}
+
+// ── TOAST ──
+const toastTimers={};
+function showToast(type,title,body){
+  const stack=document.getElementById('toastStack');
+  const id='t'+Date.now();
+  const icons={success:'<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',info:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',warn:'<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'};
+  const t=document.createElement('div');
+  t.className='toast';t.id=id;
+  t.innerHTML=`<div class="toast-icon ti-${type}">${icons[type]}</div><div class="toast-content"><div class="toast-title">${title}</div><div class="toast-body">${body}</div></div><button class="toast-close" onclick="dismissToast('${id}')">×</button>`;
+  stack.appendChild(t);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
+  toastTimers[id]=setTimeout(()=>dismissToast(id),5500);
+}
+function dismissToast(id){
+  clearTimeout(toastTimers[id]);const t=document.getElementById(id);
+  if(!t)return;t.classList.remove('show');setTimeout(()=>t.remove(),400);
+}
+
+// === CLOSETRACKIQ GATE ===
+(function(){
+  const TOKEN = 'cre-auth-2024';
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('auth') === TOKEN){
+    document.getElementById('ctiq-gate').style.display = 'none';
+  }
+})();
+
+function ctiqChkPass(){
+  const v = document.getElementById('ctiqGateIn').value;
+  const err = document.getElementById('ctiqGateErr');
+  if(v === 'FuckMichigan!'){
+    document.getElementById('ctiq-gate').style.display = 'none';
+    document.getElementById('ctiqGateIn').value = '';
+  } else {
+    err.classList.add('show');
+    document.getElementById('ctiqGateIn').value = '';
+    document.getElementById('ctiqGateIn').focus();
+  }
+}
+
+</script>
+
+
+</body></html>
